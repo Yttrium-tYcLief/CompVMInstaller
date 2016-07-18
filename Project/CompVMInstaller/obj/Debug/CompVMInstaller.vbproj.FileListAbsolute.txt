@@ -1,0 +1,13 @@
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\bin\Debug\CompVMInstaller.exe.config
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\bin\Debug\CompVMInstaller.exe
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\bin\Debug\CompVMInstaller.pdb
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\bin\Debug\CompVMInstaller.xml
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.vbprojResolveAssemblyReference.cache
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.Dialog1.resources
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.Form1.resources
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.Form2.resources
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.Resources.resources
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.vbproj.GenerateResource.Cache
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.exe
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.xml
+C:\Users\alex\Documents\GitHub\CompVMInstaller\CompVMInstaller\obj\Debug\CompVMInstaller.pdb
