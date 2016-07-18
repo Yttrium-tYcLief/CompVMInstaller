@@ -4,7 +4,7 @@ Imports System.IO.Compression
 
 Public Class Form2
 
-    Const DevMode As Boolean = True
+    Const DevMode As Boolean = False
     Const Version As Double = 1.0
 
     Dim TF2Path As String = ""
