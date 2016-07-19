@@ -30,6 +30,7 @@ Partial Class Dialog1
         '
         Me.OK_Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OK_Button.Enabled = False
+        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.OK_Button.Location = New System.Drawing.Point(451, 150)
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(67, 23)

@@ -145,7 +145,6 @@ Partial Class Form2
         Me.Manual = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel12 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox30 = New System.Windows.Forms.GroupBox()
-        Me.HelpButton = New System.Windows.Forms.Button()
         Me.OutputBox = New System.Windows.Forms.RichTextBox()
         Me.SaveButton = New System.Windows.Forms.Button()
         Me.GroupBox31 = New System.Windows.Forms.GroupBox()
@@ -157,6 +156,10 @@ Partial Class Form2
         Me.TF2FolderBtn = New System.Windows.Forms.Button()
         Me.ThreadLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.VersionLabel = New System.Windows.Forms.Label()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.SelectTeamFortress2FolderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UninstallButton = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.Wizard.SuspendLayout()
         Me.ClassTabs.SuspendLayout()
@@ -213,6 +216,7 @@ Partial Class Form2
         Me.TableLayoutPanel12.SuspendLayout()
         Me.GroupBox30.SuspendLayout()
         Me.GroupBox31.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -1756,7 +1760,6 @@ Partial Class Form2
         Me.GroupBox30.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox30.Controls.Add(Me.HelpButton)
         Me.GroupBox30.Controls.Add(Me.OutputBox)
         Me.GroupBox30.Controls.Add(Me.SaveButton)
         Me.GroupBox30.Location = New System.Drawing.Point(285, 3)
@@ -1765,16 +1768,6 @@ Partial Class Form2
         Me.GroupBox30.TabIndex = 2
         Me.GroupBox30.TabStop = False
         Me.GroupBox30.Text = "Output File"
-        '
-        'HelpButton
-        '
-        Me.HelpButton.Location = New System.Drawing.Point(6, 45)
-        Me.HelpButton.Name = "HelpButton"
-        Me.HelpButton.Size = New System.Drawing.Size(82, 26)
-        Me.HelpButton.TabIndex = 10
-        Me.HelpButton.Text = "Help?!"
-        Me.HelpButton.UseVisualStyleBackColor = True
-        Me.HelpButton.Visible = False
         '
         'OutputBox
         '
@@ -1857,9 +1850,9 @@ Partial Class Form2
         '
         'RenderButton
         '
-        Me.RenderButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RenderButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RenderButton.Enabled = False
-        Me.RenderButton.Location = New System.Drawing.Point(493, 2)
+        Me.RenderButton.Location = New System.Drawing.Point(490, 295)
         Me.RenderButton.Name = "RenderButton"
         Me.RenderButton.Size = New System.Drawing.Size(75, 23)
         Me.RenderButton.TabIndex = 0
@@ -1868,8 +1861,9 @@ Partial Class Form2
         '
         'TF2FolderBtn
         '
-        Me.TF2FolderBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TF2FolderBtn.Location = New System.Drawing.Point(312, 2)
+        Me.TF2FolderBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TF2FolderBtn.Enabled = False
+        Me.TF2FolderBtn.Location = New System.Drawing.Point(6, 295)
         Me.TF2FolderBtn.Name = "TF2FolderBtn"
         Me.TF2FolderBtn.Size = New System.Drawing.Size(175, 23)
         Me.TF2FolderBtn.TabIndex = 1
@@ -1898,15 +1892,55 @@ Partial Class Form2
         Me.VersionLabel.TabIndex = 4
         Me.VersionLabel.Text = "%VERSION%"
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.AutoSize = False
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 291)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(584, 30)
+        Me.StatusStrip1.TabIndex = 5
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripDropDownButton1
+        '
+        Me.ToolStripDropDownButton1.AutoSize = False
+        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectTeamFortress2FolderToolStripMenuItem})
+        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
+        Me.ToolStripDropDownButton1.ShowDropDownArrow = False
+        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(100, 28)
+        Me.ToolStripDropDownButton1.Text = "ToolStripDropDownButton1"
+        Me.ToolStripDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        '
+        'SelectTeamFortress2FolderToolStripMenuItem
+        '
+        Me.SelectTeamFortress2FolderToolStripMenuItem.Name = "SelectTeamFortress2FolderToolStripMenuItem"
+        Me.SelectTeamFortress2FolderToolStripMenuItem.Size = New System.Drawing.Size(236, 22)
+        Me.SelectTeamFortress2FolderToolStripMenuItem.Text = "Select ""Team Fortress 2"" Folder"
+        '
+        'UninstallButton
+        '
+        Me.UninstallButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UninstallButton.Location = New System.Drawing.Point(412, 295)
+        Me.UninstallButton.Name = "UninstallButton"
+        Me.UninstallButton.Size = New System.Drawing.Size(75, 23)
+        Me.UninstallButton.TabIndex = 6
+        Me.UninstallButton.Text = "Uninstall"
+        Me.UninstallButton.UseVisualStyleBackColor = True
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 321)
+        Me.Controls.Add(Me.UninstallButton)
+        Me.Controls.Add(Me.RenderButton)
+        Me.Controls.Add(Me.TF2FolderBtn)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.VersionLabel)
         Me.Controls.Add(Me.ThreadLinkLabel)
-        Me.Controls.Add(Me.TF2FolderBtn)
-        Me.Controls.Add(Me.RenderButton)
         Me.Controls.Add(Me.TabControl1)
         Me.MinimumSize = New System.Drawing.Size(600, 360)
         Me.Name = "Form2"
@@ -2008,6 +2042,8 @@ Partial Class Form2
         Me.GroupBox30.ResumeLayout(False)
         Me.GroupBox31.ResumeLayout(False)
         Me.GroupBox31.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2143,8 +2179,11 @@ Partial Class Form2
     Friend WithEvents EngineerHideToolbox As CheckBox
     Friend WithEvents EngineerHidePDA As CheckBox
     Private WithEvents TabControl1 As TabControl
-    Friend WithEvents HelpButton As Button
     Friend WithEvents ScoutHideShortstop As CheckBox
     Friend WithEvents ThreadLinkLabel As LinkLabel
     Friend WithEvents VersionLabel As Label
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripDropDownButton1 As ToolStripDropDownButton
+    Friend WithEvents SelectTeamFortress2FolderToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UninstallButton As Button
 End Class

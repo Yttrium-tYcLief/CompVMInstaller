@@ -1,0 +1,11 @@
+1.1
+Added dedicated "uninstall" button.
+Moved buttons to a lower panel for better consistency.
+Mod now fully installs even if nothing is checked.
+Mod now installs as a single VPK archive rather than a set of loose folders and files.
+	This makes it easier to distribute configurations and wipe over old installs.
+The installer now saves your TF2 directory to the registry, and attempts to recall it upon future loads.
+	The registry path is HKEY_CURRENT_USER\Software\CompVMInstaller\TF2Path
+	
+1.0
+Base release.

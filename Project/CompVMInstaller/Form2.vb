@@ -5,7 +5,7 @@ Imports System.IO.Compression
 Public Class Form2
 
     Const DevMode As Boolean = False
-    Const Version As Double = 1.0
+    Const Version As Double = 1.1
 
     Dim TF2Path As String = ""
     Dim FileName As String = ""
@@ -21,26 +21,20 @@ Public Class Form2
     Dim EngineerChanged As Boolean = False
 
     Private Sub TF2FolderBtn_Click(sender As Object, e As EventArgs) Handles TF2FolderBtn.Click
-        If DevMode = True Then
-            If File.Exists("D:\Steam Library\SteamApps\common\Team Fortress 2\bin\vpk.exe") And File.Exists("D:\Steam Library\SteamApps\common\Team Fortress 2\bin\studiomdl.exe") Then
+        Dim OpenFolderDialog1 As New FolderBrowserDialog()
+        If OpenFolderDialog1.ShowDialog() = DialogResult.OK Then
+            If File.Exists(OpenFolderDialog1.SelectedPath + "\bin\vpk.exe") And File.Exists(OpenFolderDialog1.SelectedPath + "\bin\studiomdl.exe") Then
                 MessageBox.Show("Valid TF2 installation found.", "Success")
-                TF2Path = "D:\Steam Library\SteamApps\common\Team Fortress 2"
+                TF2Path = OpenFolderDialog1.SelectedPath
                 RenderButton.Enabled = True
+                If Not My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing) Is Nothing Then
+                    My.Computer.Registry.CurrentUser.CreateSubKey("Software\CompVMInstaller")
+                End If
+                My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", TF2Path)
+                TF2FolderBtn.Enabled = True
             Else
                 MessageBox.Show("Invalid TF2 path!", "Error")
                 RenderButton.Enabled = False
-            End If
-        Else
-            Dim OpenFolderDialog1 As New FolderBrowserDialog()
-            If OpenFolderDialog1.ShowDialog() = DialogResult.OK Then
-                If File.Exists(OpenFolderDialog1.SelectedPath + "\bin\vpk.exe") And File.Exists(OpenFolderDialog1.SelectedPath + "\bin\studiomdl.exe") Then
-                    MessageBox.Show("Valid TF2 installation found.", "Success")
-                    TF2Path = OpenFolderDialog1.SelectedPath
-                    RenderButton.Enabled = True
-                Else
-                    MessageBox.Show("Invalid TF2 path!", "Error")
-                    RenderButton.Enabled = False
-                End If
             End If
         End If
     End Sub
@@ -48,16 +42,21 @@ Public Class Form2
     Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         VersionLabel.Text = "v" + FormatNumber(CDbl(Version), 1) + " by yttrium"
         If DevMode = False Then
-            LoadButton.Enabled = False
-            RefreshButton.Enabled = False
-            SaveButton.Enabled = False
-            InputPath.ReadOnly = True
-            InputBox.ReadOnly = True
-            OutputBox.ReadOnly = True
-            HelpButton.Visible = True
             TabControl1.TabPages.RemoveAt(1)
             VersionLabel.Location = New Point(60, 10)
             ThreadLinkLabel.Location = New Point(135, 10)
+        End If
+
+        If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing) Is Nothing Then
+            TF2FolderBtn.Enabled = True
+        Else
+            Dim readValue = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing)
+            If File.Exists(readValue + "\bin\vpk.exe") And File.Exists(readValue + "\bin\studiomdl.exe") Then
+                TF2Path = readValue
+                RenderButton.Enabled = True
+            Else
+                TF2FolderBtn.Enabled = True
+            End If
         End If
     End Sub
 
@@ -107,16 +106,15 @@ Public Class Form2
         Dim FBytes() As Byte = My.Resources.animations
         Dim TmpPath As String = ""
         Try
-            If Directory.Exists(TF2Path + "\tf\tmp") Then
-                My.Computer.FileSystem.DeleteDirectory(TF2Path + "\tf\tmp", FileIO.DeleteDirectoryOption.DeleteAllContents)
+            If Directory.Exists(TF2Path + "\tf\tmpcmpvm") Then
+                My.Computer.FileSystem.DeleteDirectory(TF2Path + "\tf\tmpcmpvm", FileIO.DeleteDirectoryOption.DeleteAllContents)
             End If
-            Directory.CreateDirectory(TF2Path + "\tf\tmp")
+            Directory.CreateDirectory(TF2Path + "\tf\tmpcmpvm")
             TmpPath = Path.GetTempPath
         Catch ex As Exception
         End Try
         My.Computer.FileSystem.WriteAllBytes(TmpPath + "\animations.zip", FBytes, True)
-        ZipFile.ExtractToDirectory(TmpPath + "\animations.zip", TF2Path + "\tf\tmp")
-        'My.Computer.FileSystem.WriteAllBytes(TF2Path + "\tf\tmp\animations.zip", FBytes, True)
+        ZipFile.ExtractToDirectory(TmpPath + "\animations.zip", TF2Path + "\tf\tmpcmpvm")
     End Sub
 
     Sub CheckForChanges()
@@ -247,9 +245,14 @@ Public Class Form2
 
     Sub CompileModel(TfClass As String)
         Dialog1.InfoBox.AppendText("Compiling model for class:  " + TfClass + "... ")
-        'Dim Mdlstudio As Process = Process.Start("cmd", "/k " + Chr(34) + TF2Path + "\bin\studiomdl.exe" + Chr(34) + " -game " + Chr(34) + TF2Path + "\tf" + Chr(34) + " -nop4 -verbose " + Chr(34) + TF2Path + "\tf\tmp\c_" + TfClass.ToLower + "_animations.qc" + Chr(34) + " && pause")
-        Dim Mdlstudio As Process = Process.Start(TF2Path + "\bin\studiomdl.exe", "-game """ + TF2Path + "\tf"" -nop4 -verbose """ + TF2Path + "\tf\tmp\c_" + TfClass.ToLower + "_animations.qc""")
+        Dim Mdlstudio As New Process
+        Mdlstudio.StartInfo = New ProcessStartInfo(TF2Path + "\bin\studiomdl.exe")
+        Mdlstudio.StartInfo.Arguments = "-game """ + TF2Path + "\tf"" -nop4 -verbose """ + TF2Path + "\tf\tmpcmpvm\c_" + TfClass.ToLower + "_animations.qc"""
+        Mdlstudio.StartInfo.CreateNoWindow = True
+        Mdlstudio.StartInfo.UseShellExecute = False
+        Mdlstudio.Start()
         Mdlstudio.WaitForExit()
+
         Dialog1.InfoBox.AppendText("Done." + vbNewLine)
     End Sub
 
@@ -259,7 +262,7 @@ Public Class Form2
 
         Dialog1.InfoBox.AppendText("Editing animation file """ + Filename + """ for class: " + TfClass + "... ")
 
-        Dim EditPath As String = TF2Path + "\tf\tmp\c_" + TfClass.ToLower + "_animations_anims\" + Filename + ".smd"
+        Dim EditPath As String = TF2Path + "\tf\tmpcmpvm\c_" + TfClass.ToLower + "_animations_anims\" + Filename + ".smd"
 
         Using sr As New StreamReader(EditPath)
             While Not sr.EndOfStream
@@ -313,11 +316,8 @@ Public Class Form2
 
     End Sub
 
-    Private Sub HelpButton_Click(sender As Object, e As EventArgs) Handles HelpButton.Click
-        MessageBox.Show("Improper use Of this tab WILL crash the program, so it has been disabled for public builds.", "Warning")
-    End Sub
-
     Private Sub RenderButton_Click(sender As Object, e As EventArgs) Handles RenderButton.Click
+
         Dialog1.Show()
         Dialog1.InfoBox.Clear()
         Dialog1.InfoBox.AppendText("Extracting files... ")
@@ -327,10 +327,10 @@ Public Class Form2
         RenderFiles()
         RenderModels()
         CopyModels()
+        PackageMod()
+        CleanUp()
 
         Dialog1.InfoBox.AppendText(vbNewLine + "Mod installed.")
-
-        'If DevMode = False Then InputBox.ReadOnly = True
         Dialog1.OK_Button.Enabled = True
 
     End Sub
@@ -889,27 +889,50 @@ Public Class Form2
         Finally
             Dialog1.InfoBox.AppendText("Done." + vbNewLine)
         End Try
-        If ScoutChanged Or SniperChanged Or SoldierChanged Or DemomanChanged Or MedicChanged Or HeavyChanged Or PyroChanged Or SpyChanged Or EngineerChanged Then
-            Directory.CreateDirectory(TF2Path + "\tf\custom\compviewmodels")
-            Directory.CreateDirectory(TF2Path + "\tf\custom\compviewmodels\models")
-            Directory.CreateDirectory(TF2Path + "\tf\custom\compviewmodels\models\weapons")
-            Directory.CreateDirectory(TF2Path + "\tf\custom\compviewmodels\models\weapons\c_models\")
-            If ScoutChanged Then MoveModel("Scout")
-            If SniperChanged Then MoveModel("Sniper")
-            If SoldierChanged Then MoveModel("Soldier")
-            If DemomanChanged Then MoveModel("Demo")
-            If MedicChanged Then MoveModel("Medic")
-            If HeavyChanged Then MoveModel("Heavy")
-            If PyroChanged Then MoveModel("Pyro")
-            If SpyChanged Then MoveModel("Spy")
-            If EngineerChanged Then MoveModel("Engineer")
-        End If
+        Directory.CreateDirectory(TF2Path + "\tf\custom\compviewmodels")
+        Directory.CreateDirectory(TF2Path + "\tf\custom\compviewmodels\models")
+        Directory.CreateDirectory(TF2Path + "\tf\custom\compviewmodels\models\weapons")
+        Directory.CreateDirectory(TF2Path + "\tf\custom\compviewmodels\models\weapons\c_models\")
+        If ScoutChanged Then MoveModel("Scout")
+        If SniperChanged Then MoveModel("Sniper")
+        If SoldierChanged Then MoveModel("Soldier")
+        If DemomanChanged Then MoveModel("Demo")
+        If MedicChanged Then MoveModel("Medic")
+        If HeavyChanged Then MoveModel("Heavy")
+        If PyroChanged Then MoveModel("Pyro")
+        If SpyChanged Then MoveModel("Spy")
+        If EngineerChanged Then MoveModel("Engineer")
+    End Sub
+
+    Private Sub PackageMod()
+        Dialog1.InfoBox.AppendText("Packaging mod... ")
+        Dim Mdlstudio As New Process
+        Mdlstudio.StartInfo = New ProcessStartInfo(TF2Path + "\bin\vpk.exe")
+        Mdlstudio.StartInfo.Arguments = """" + TF2Path + "\tf\custom\compviewmodels"""
+        Mdlstudio.StartInfo.CreateNoWindow = True
+        Mdlstudio.StartInfo.UseShellExecute = False
+        Mdlstudio.Start()
+        Mdlstudio.WaitForExit()
+
+        Dialog1.InfoBox.AppendText("Done." + vbNewLine)
+    End Sub
+
+    Private Sub CleanUp()
+        Dialog1.InfoBox.AppendText("Cleaning up... ")
+        Try
+            My.Computer.FileSystem.DeleteDirectory(TF2Path + "\tf\tmpcmpvm", FileIO.DeleteDirectoryOption.DeleteAllContents)
+            My.Computer.FileSystem.DeleteDirectory(TF2Path + "\tf\custom\compviewmodels", FileIO.DeleteDirectoryOption.DeleteAllContents)
+        Catch ex As Exception
+            Dialog1.InfoBox.AppendText("ERROR! Continuing... ")
+        Finally
+            Dialog1.InfoBox.AppendText("Done." + vbNewLine)
+        End Try
     End Sub
 
     Private Sub MoveModel(TfClass As String)
         Try
             If File.Exists(TF2Path + "\tf\models\weapons\c_models\c_" + TfClass.ToLower + "_animations.mdl") Then
-                Dialog1.InfoBox.AppendText("Installing compiled model for class: " + TfClass + "... ")
+                Dialog1.InfoBox.AppendText("Installing compiled model For Class: " + TfClass + "... ")
                 File.Move(TF2Path + "\tf\models\weapons\c_models\c_" + TfClass.ToLower + "_animations.mdl", TF2Path + "\tf\custom\compviewmodels\models\weapons\c_models\c_" + TfClass.ToLower + "_animations.mdl")
                 Dialog1.InfoBox.AppendText("Done." + vbNewLine)
             Else
@@ -923,5 +946,26 @@ Public Class Form2
     Private Sub ThreadLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThreadLinkLabel.LinkClicked
         ThreadLinkLabel.LinkVisited = True
         Process.Start("www.teamfortress.tv/34834/yttriums-competitive-viewmodels/")
+    End Sub
+
+    Private Sub UninstallButton_Click(sender As Object, e As EventArgs) Handles UninstallButton.Click
+        Dialog1.Show()
+        Dialog1.InfoBox.Clear()
+        Dialog1.InfoBox.AppendText("Looking for previous install... ")
+        Try
+            If File.Exists(TF2Path + "\tf\custom\compviewmodels.vpk") Then
+                Dialog1.InfoBox.AppendText("Found. Deleting... ")
+                My.Computer.FileSystem.DeleteFile(TF2Path + "\tf\custom\compviewmodels.vpk")
+                Dialog1.InfoBox.AppendText("Done." + vbNewLine)
+                Dialog1.InfoBox.AppendText(vbNewLine + "Mod uninstalled.")
+                Dialog1.OK_Button.Enabled = True
+            Else
+                Dialog1.InfoBox.AppendText("None found. No need for uninstall.")
+                Dialog1.OK_Button.Enabled = True
+            End If
+        Catch ex As Exception
+            Dialog1.InfoBox.AppendText("ERROR!")
+            Dialog1.OK_Button.Enabled = True
+        End Try
     End Sub
 End Class
