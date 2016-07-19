@@ -8,6 +8,6 @@ Public Class Dialog1
     End Sub
 
     Private Sub Dialog1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.TopMost = True
     End Sub
 End Class

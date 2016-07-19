@@ -5,7 +5,7 @@ Imports System.IO.Compression
 Public Class Form2
 
     Const DevMode As Boolean = False
-    Const Version As Double = 1.1
+    Const Version As Double = 1.2
 
     Dim TF2Path As String = ""
     Dim FileName As String = ""
