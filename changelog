@@ -1,3 +1,7 @@
+1.2
+The install/uninstall progress dialog is now Always On Top.
+Updated animation files to support the July 28, 2016 patch.
+
 1.1
 Added dedicated "uninstall" button.
 Moved buttons to a lower panel for better consistency.
