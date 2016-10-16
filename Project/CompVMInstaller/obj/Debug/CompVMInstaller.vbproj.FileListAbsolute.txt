@@ -24,3 +24,5 @@ C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.Form2.resources
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.Resources.resources
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.vbproj.GenerateResource.Cache
+C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.Form3.resources
+C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.AboutBox1.resources

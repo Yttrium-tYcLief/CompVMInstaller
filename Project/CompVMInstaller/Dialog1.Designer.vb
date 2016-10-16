@@ -63,7 +63,7 @@ Partial Class Dialog1
         Me.MinimizeBox = False
         Me.Name = "Dialog1"
         Me.ShowInTaskbar = False
-        Me.Text = "Dialog1"
+        Me.Text = "Progress"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

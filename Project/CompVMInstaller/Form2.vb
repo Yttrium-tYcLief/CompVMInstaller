@@ -5,7 +5,7 @@ Imports System.IO.Compression
 Public Class Form2
 
     Const DevMode As Boolean = False
-    Const Version As Double = 1.2
+    Public Const Version As Double = 1.3
 
     Dim TF2Path As String = ""
     Dim FileName As String = ""
@@ -40,11 +40,9 @@ Public Class Form2
     End Sub
 
     Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        VersionLabel.Text = "v" + FormatNumber(CDbl(Version), 1) + " by yttrium"
         If DevMode = False Then
-            TabControl1.TabPages.RemoveAt(1)
-            VersionLabel.Location = New Point(60, 10)
-            ThreadLinkLabel.Location = New Point(135, 10)
+            TabControl1.TabPages.RemoveAt(2)
+            TabControl1.TabPages.RemoveAt(0)
         End If
 
         If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing) Is Nothing Then
@@ -58,6 +56,8 @@ Public Class Form2
                 TF2FolderBtn.Enabled = True
             End If
         End If
+
+
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As EventArgs) Handles SaveButton.Click
@@ -257,7 +257,7 @@ Public Class Form2
     End Sub
 
     Sub EditFile(Filename As String, TfClass As String)
-        
+
         InputBox.Clear()
 
         Dialog1.InfoBox.AppendText("Editing animation file """ + Filename + """ for class: " + TfClass + "... ")
@@ -328,6 +328,7 @@ Public Class Form2
         RenderModels()
         CopyModels()
         PackageMod()
+        PreloaderInstall()
         CleanUp()
 
         Dialog1.InfoBox.AppendText(vbNewLine + "Mod installed.")
@@ -932,7 +933,7 @@ Public Class Form2
     Private Sub MoveModel(TfClass As String)
         Try
             If File.Exists(TF2Path + "\tf\models\weapons\c_models\c_" + TfClass.ToLower + "_animations.mdl") Then
-                Dialog1.InfoBox.AppendText("Installing compiled model For Class: " + TfClass + "... ")
+                Dialog1.InfoBox.AppendText("Installing compiled model for class: " + TfClass + "... ")
                 File.Move(TF2Path + "\tf\models\weapons\c_models\c_" + TfClass.ToLower + "_animations.mdl", TF2Path + "\tf\custom\compviewmodels\models\weapons\c_models\c_" + TfClass.ToLower + "_animations.mdl")
                 Dialog1.InfoBox.AppendText("Done." + vbNewLine)
             Else
@@ -941,11 +942,6 @@ Public Class Form2
         Catch ex As Exception
             Dialog1.InfoBox.AppendText("ERROR: File found, but failed to install for " + TfClass + "! Contact developer." + vbNewLine)
         End Try
-    End Sub
-
-    Private Sub ThreadLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThreadLinkLabel.LinkClicked
-        ThreadLinkLabel.LinkVisited = True
-        Process.Start("www.teamfortress.tv/34834/yttriums-competitive-viewmodels/")
     End Sub
 
     Private Sub UninstallButton_Click(sender As Object, e As EventArgs) Handles UninstallButton.Click
@@ -957,15 +953,613 @@ Public Class Form2
                 Dialog1.InfoBox.AppendText("Found. Deleting... ")
                 My.Computer.FileSystem.DeleteFile(TF2Path + "\tf\custom\compviewmodels.vpk")
                 Dialog1.InfoBox.AppendText("Done." + vbNewLine)
+                PreloaderUninstall()
                 Dialog1.InfoBox.AppendText(vbNewLine + "Mod uninstalled.")
                 Dialog1.OK_Button.Enabled = True
             Else
-                Dialog1.InfoBox.AppendText("None found. No need for uninstall.")
+                Dialog1.InfoBox.AppendText("None found. No need for uninstall." + vbNewLine)
+                PreloaderUninstall()
                 Dialog1.OK_Button.Enabled = True
             End If
         Catch ex As Exception
             Dialog1.InfoBox.AppendText("ERROR!")
             Dialog1.OK_Button.Enabled = True
         End Try
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles AboutButton.Click
+        AboutBox1.ShowDialog()
+    End Sub
+
+
+    'Begin longass guide
+
+    Private Sub ScoutHideScatterguns_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHideScatterguns.CheckedChanged, ScoutHideScatterguns.MouseEnter
+        If ScoutHideScatterguns.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_scattergun
+        End If
+    End Sub
+    Private Sub ScoutHideDoubleBarrels_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHideDoubleBarrels.CheckedChanged, ScoutHideDoubleBarrels.MouseEnter
+        If ScoutHideDoubleBarrels.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_fan
+        End If
+    End Sub
+    Private Sub ScoutHideShortstop_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHideShortstop.CheckedChanged, ScoutHideShortstop.MouseEnter
+        If ScoutHideShortstop.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_shortstop
+        End If
+    End Sub
+    Private Sub ScoutHideShortstopPush_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHideShortstopPush.CheckedChanged, ScoutHideShortstopPush.MouseEnter
+        If ScoutHideShortstopPush.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_push
+        End If
+    End Sub
+    Private Sub ScoutHidePrimaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHidePrimaryInspect.CheckedChanged, ScoutHidePrimaryInspect.MouseEnter
+        If ScoutHidePrimaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_scattergun_inspect
+        End If
+    End Sub
+    Private Sub ScoutHidePistols_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHidePistols.CheckedChanged, ScoutHidePistols.MouseEnter
+        If ScoutHidePistols.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_pistol
+        End If
+    End Sub
+    Private Sub ScoutHideThrowables_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHideThrowables.CheckedChanged, ScoutHideThrowables.MouseEnter
+        If ScoutHideThrowables.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_milk
+        End If
+
+    End Sub
+    Private Sub ScoutHideDrinks_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHideDrinks.CheckedChanged, ScoutHideDrinks.MouseEnter
+        If ScoutHideDrinks.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_drink
+        End If
+
+    End Sub
+    Private Sub ScoutHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHideSecondaryInspect.CheckedChanged, ScoutHideSecondaryInspect.MouseEnter
+        If ScoutHideSecondaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_pistol_inspect
+        End If
+
+    End Sub
+    Private Sub ScoutHideMelee_CheckedChanged(sender As Object, e As EventArgs) Handles ScoutHideMelee.CheckedChanged, ScoutHideMelee.MouseEnter
+        If ScoutHideMelee.Checked Then
+            GuidePictureBox.Image = My.Resources.scout_blank
+        Else
+            GuidePictureBox.Image = My.Resources.scout_melee
+        End If
+
+    End Sub
+    Private Sub SniperHideRifles_CheckedChanged(sender As Object, e As EventArgs) Handles SniperHideRifles.CheckedChanged, SniperHideRifles.MouseEnter
+        If SniperHideRifles.Checked Then
+            GuidePictureBox.Image = My.Resources.sniper_blank
+        Else
+            GuidePictureBox.Image = My.Resources.sniper_sniperrifle
+        End If
+
+    End Sub
+    Private Sub SniperHideHuntsman_CheckedChanged(sender As Object, e As EventArgs) Handles SniperHideHuntsman.CheckedChanged, SniperHideHuntsman.MouseEnter
+        If SniperHideHuntsman.Checked Then
+            GuidePictureBox.Image = My.Resources.sniper_blank
+        Else
+            GuidePictureBox.Image = My.Resources.sniper_huntsman
+        End If
+
+    End Sub
+    Private Sub SniperHidePrimaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles SniperHidePrimaryInspect.CheckedChanged, SniperHidePrimaryInspect.MouseEnter
+        If SniperHidePrimaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.sniper_blank
+        Else
+            GuidePictureBox.Image = My.Resources.sniper_sniperrifle_inspect
+        End If
+
+    End Sub
+    Private Sub SniperHideSMGs_CheckedChanged(sender As Object, e As EventArgs) Handles SniperHideSMGs.CheckedChanged, SniperHideSMGs.MouseEnter
+        If SniperHideSMGs.Checked Then
+            GuidePictureBox.Image = My.Resources.sniper_blank
+        Else
+            GuidePictureBox.Image = My.Resources.sniper_smg
+        End If
+
+    End Sub
+    Private Sub SniperHideThrowables_CheckedChanged(sender As Object, e As EventArgs) Handles SniperHideThrowables.CheckedChanged, SniperHideThrowables.MouseEnter
+        If SniperHideThrowables.Checked Then
+            GuidePictureBox.Image = My.Resources.sniper_blank
+        Else
+            GuidePictureBox.Image = My.Resources.sniper_jarate
+        End If
+
+    End Sub
+    Private Sub SniperHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles SniperHideSecondaryInspect.CheckedChanged, SniperHideSecondaryInspect.MouseEnter
+        If SniperHideSecondaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.sniper_blank
+        Else
+            GuidePictureBox.Image = My.Resources.sniper_smg_inspect
+        End If
+
+    End Sub
+    Private Sub SniperHideMelee_CheckedChanged(sender As Object, e As EventArgs) Handles SniperHideMelee.CheckedChanged, SniperHideMelee.MouseEnter
+        If SniperHideMelee.Checked Then
+            GuidePictureBox.Image = My.Resources.sniper_blank
+        Else
+            GuidePictureBox.Image = My.Resources.sniper_melee
+        End If
+
+    End Sub
+    Private Sub SoldierHideRockets_CheckedChanged(sender As Object, e As EventArgs) Handles SoldierHideRockets.CheckedChanged, SoldierHideRockets.MouseEnter
+        If SoldierHideRockets.Checked Then
+            GuidePictureBox.Image = My.Resources.soldier_blank
+        Else
+            GuidePictureBox.Image = My.Resources.soldier_rocketlauncher
+        End If
+
+    End Sub
+    Private Sub SoldierHideOriginal_CheckedChanged(sender As Object, e As EventArgs) Handles SoldierHideOriginal.CheckedChanged, SoldierHideOriginal.MouseEnter
+        If SoldierHideOriginal.Checked Then
+            GuidePictureBox.Image = My.Resources.soldier_blank
+        Else
+            GuidePictureBox.Image = My.Resources.soldier_original
+        End If
+
+    End Sub
+    Private Sub SoldierHidePrimaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles SoldierHidePrimaryInspect.CheckedChanged, SoldierHidePrimaryInspect.MouseEnter
+        If SoldierHidePrimaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.soldier_blank
+        Else
+            GuidePictureBox.Image = My.Resources.soldier_rocketlauncher_inspect
+        End If
+
+    End Sub
+    Private Sub SoldierHideShotguns_CheckedChanged(sender As Object, e As EventArgs) Handles SoldierHideShotguns.CheckedChanged, SoldierHideShotguns.MouseEnter
+        If SoldierHideShotguns.Checked Then
+            GuidePictureBox.Image = My.Resources.soldier_blank
+        Else
+            GuidePictureBox.Image = My.Resources.soldier_shotgun
+        End If
+
+    End Sub
+    Private Sub SoldierHideBanners_CheckedChanged(sender As Object, e As EventArgs) Handles SoldierHideBanners.CheckedChanged, SoldierHideBanners.MouseEnter
+        If SoldierHideBanners.Checked Then
+            GuidePictureBox.Image = My.Resources.soldier_blank
+        Else
+            GuidePictureBox.Image = My.Resources.soldier_banner
+        End If
+
+    End Sub
+    Private Sub SoldierHideBison_CheckedChanged(sender As Object, e As EventArgs) Handles SoldierHideBison.CheckedChanged, SoldierHideBison.MouseEnter
+        If SoldierHideBison.Checked Then
+            GuidePictureBox.Image = My.Resources.soldier_blank
+        Else
+            GuidePictureBox.Image = My.Resources.soldier_bison
+        End If
+
+    End Sub
+    Private Sub SoldierHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles SoldierHideSecondaryInspect.CheckedChanged, SoldierHideSecondaryInspect.MouseEnter
+        If SoldierHideSecondaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.soldier_blank
+        Else
+            GuidePictureBox.Image = My.Resources.soldier_shotgun_inspect
+        End If
+
+    End Sub
+    Private Sub SoldierHideMelee_CheckedChanged(sender As Object, e As EventArgs) Handles SoldierHideMelee.CheckedChanged, SoldierHideMelee.MouseEnter
+        If SoldierHideMelee.Checked Then
+            GuidePictureBox.Image = My.Resources.soldier_blank
+        Else
+            GuidePictureBox.Image = My.Resources.soldier_melee
+        End If
+
+    End Sub
+    Private Sub DemomanHideGrenades_CheckedChanged(sender As Object, e As EventArgs) Handles DemomanHideGrenades.CheckedChanged, DemomanHideGrenades.MouseEnter
+        If DemomanHideGrenades.Checked Then
+            GuidePictureBox.Image = My.Resources.demo_blank
+        Else
+            GuidePictureBox.Image = My.Resources.demo_grenadelauncher
+        End If
+
+    End Sub
+    Private Sub DemomanHidePrimaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles DemomanHidePrimaryInspect.CheckedChanged, DemomanHidePrimaryInspect.MouseEnter
+        If DemomanHidePrimaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.demo_blank
+        Else
+            GuidePictureBox.Image = My.Resources.demo_grenadelauncher_inspect
+        End If
+
+    End Sub
+    Private Sub DemomanHideStickybombs_CheckedChanged(sender As Object, e As EventArgs) Handles DemomanHideStickybombs.CheckedChanged, DemomanHideStickybombs.MouseEnter
+        If DemomanHideStickybombs.Checked Then
+            GuidePictureBox.Image = My.Resources.demo_blank
+        Else
+            GuidePictureBox.Image = My.Resources.demo_stickybomb
+        End If
+
+    End Sub
+    Private Sub DemomanHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles DemomanHideSecondaryInspect.CheckedChanged, DemomanHideSecondaryInspect.MouseEnter
+        If DemomanHideSecondaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.demo_blank
+        Else
+            GuidePictureBox.Image = My.Resources.demo_stickybomb_inspect
+        End If
+
+    End Sub
+    Private Sub DemomanHideMelee_CheckedChanged(sender As Object, e As EventArgs) Handles DemomanHideMelee.CheckedChanged, DemomanHideMelee.MouseEnter
+        If DemomanHideMelee.Checked Then
+            GuidePictureBox.Image = My.Resources.demo_blank
+        Else
+            GuidePictureBox.Image = My.Resources.demo_melee
+        End If
+
+    End Sub
+    Private Sub MedicHidePrimaries_CheckedChanged(sender As Object, e As EventArgs) Handles MedicHidePrimaries.CheckedChanged, MedicHidePrimaries.MouseEnter
+        If MedicHidePrimaries.Checked Then
+            GuidePictureBox.Image = My.Resources.medic_blank
+        Else
+            GuidePictureBox.Image = My.Resources.medic_syringegun
+        End If
+
+    End Sub
+    Private Sub MedicHideMediguns_CheckedChanged(sender As Object, e As EventArgs) Handles MedicHideMediguns.CheckedChanged, MedicHideMediguns.MouseEnter
+        If MedicHideMediguns.Checked Then
+            GuidePictureBox.Image = My.Resources.medic_blank
+        Else
+            GuidePictureBox.Image = My.Resources.medic_medigun
+        End If
+
+    End Sub
+    Private Sub MedicHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles MedicHideSecondaryInspect.CheckedChanged, MedicHideSecondaryInspect.MouseEnter
+        If MedicHideSecondaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.medic_blank
+        Else
+            GuidePictureBox.Image = My.Resources.medic_medigun_inspect
+        End If
+
+    End Sub
+    Private Sub MedicHideMelee_CheckedChanged(sender As Object, e As EventArgs) Handles MedicHideMelee.CheckedChanged, MedicHideMelee.MouseEnter
+        If MedicHideMelee.Checked Then
+            GuidePictureBox.Image = My.Resources.medic_blank
+        Else
+            GuidePictureBox.Image = My.Resources.medic_melee
+        End If
+
+    End Sub
+    Private Sub HeavyHideMiniguns_CheckedChanged(sender As Object, e As EventArgs) Handles HeavyHideMiniguns.CheckedChanged, HeavyHideMiniguns.MouseEnter
+        If HeavyHideMiniguns.Checked Then
+            GuidePictureBox.Image = My.Resources.heavy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.heavy_minigun
+        End If
+
+    End Sub
+    Private Sub HeavyHidePrimaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles HeavyHidePrimaryInspect.CheckedChanged, HeavyHidePrimaryInspect.MouseEnter
+        If HeavyHidePrimaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.heavy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.heavy_minigun_inspect
+        End If
+
+    End Sub
+    Private Sub HeavyHideShotguns_CheckedChanged(sender As Object, e As EventArgs) Handles HeavyHideShotguns.CheckedChanged, HeavyHideShotguns.MouseEnter
+        If HeavyHideShotguns.Checked Then
+            GuidePictureBox.Image = My.Resources.heavy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.heavy_shotgun
+        End If
+
+    End Sub
+    Private Sub HeavyHideConsumables_CheckedChanged(sender As Object, e As EventArgs) Handles HeavyHideConsumables.CheckedChanged, HeavyHideConsumables.MouseEnter
+        If HeavyHideConsumables.Checked Then
+            GuidePictureBox.Image = My.Resources.heavy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.heavy_sandvich
+        End If
+
+    End Sub
+    Private Sub HeavyHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles HeavyHideSecondaryInspect.CheckedChanged, HeavyHideSecondaryInspect.MouseEnter
+        If HeavyHideSecondaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.heavy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.heavy_shotgun_inspect
+        End If
+
+    End Sub
+    Private Sub HeavyHideMelee_CheckedChanged(sender As Object, e As EventArgs) Handles HeavyHideMelee.CheckedChanged, HeavyHideMelee.MouseEnter
+        If HeavyHideMelee.Checked Then
+            GuidePictureBox.Image = My.Resources.heavy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.heavy_fists
+        End If
+
+    End Sub
+    Private Sub PyroHideFlamethrowers_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHideFlamethrowers.CheckedChanged, PyroHideFlamethrowers.MouseEnter
+        If PyroHideFlamethrowers.Checked Then
+            GuidePictureBox.Image = My.Resources.pyro_blank
+        Else
+            GuidePictureBox.Image = My.Resources.pyro_flamethrower
+        End If
+
+    End Sub
+    Private Sub PyroHidePrimaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHidePrimaryInspect.CheckedChanged, PyroHidePrimaryInspect.MouseEnter
+        If PyroHidePrimaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.pyro_blank
+        Else
+            GuidePictureBox.Image = My.Resources.pyro_flamethrower_inspect
+        End If
+
+    End Sub
+    Private Sub PyroHideShotguns_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHideShotguns.CheckedChanged, PyroHideShotguns.MouseEnter
+        If PyroHideShotguns.Checked Then
+            GuidePictureBox.Image = My.Resources.pyro_blank
+        Else
+            GuidePictureBox.Image = My.Resources.pyro_shotgun
+        End If
+
+    End Sub
+    Private Sub PyroHideFlareGuns_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHideFlareGuns.CheckedChanged, PyroHideFlareGuns.MouseEnter
+        If PyroHideFlareGuns.Checked Then
+            GuidePictureBox.Image = My.Resources.pyro_blank
+        Else
+            GuidePictureBox.Image = My.Resources.pyro_flaregun
+        End If
+
+    End Sub
+    Private Sub PyroHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHideSecondaryInspect.CheckedChanged, PyroHideSecondaryInspect.MouseEnter
+        If PyroHideSecondaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.pyro_blank
+        Else
+            GuidePictureBox.Image = My.Resources.pyro_shotgun_inspect
+        End If
+
+    End Sub
+    Private Sub PyroHideMelee_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHideMelee.CheckedChanged, PyroHideMelee.MouseEnter
+        If PyroHideMelee.Checked Then
+            GuidePictureBox.Image = My.Resources.pyro_blank
+        Else
+            GuidePictureBox.Image = My.Resources.pyro_melee
+        End If
+
+    End Sub
+    Private Sub SpyHideRevolvers_CheckedChanged(sender As Object, e As EventArgs) Handles SpyHideRevolvers.CheckedChanged, SpyHideRevolvers.MouseEnter
+        If SpyHideRevolvers.Checked Then
+            GuidePictureBox.Image = My.Resources.spy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.spy_revolver
+        End If
+
+    End Sub
+    Private Sub SpyHidePrimaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles SpyHidePrimaryInspect.CheckedChanged, SpyHidePrimaryInspect.MouseEnter
+        If SpyHidePrimaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.spy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.spy_revolver_inspect
+        End If
+
+    End Sub
+    Private Sub SpyHideSappers_CheckedChanged(sender As Object, e As EventArgs) Handles SpyHideSappers.CheckedChanged, SpyHideSappers.MouseEnter
+        If SpyHideSappers.Checked Then
+            GuidePictureBox.Image = My.Resources.spy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.spy_sapper
+        End If
+
+    End Sub
+    Private Sub SpyHideMelee_CheckedChanged(sender As Object, e As EventArgs) Handles SpyHideMelee.CheckedChanged, SpyHideMelee.MouseEnter
+        If SpyHideMelee.Checked Then
+            GuidePictureBox.Image = My.Resources.spy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.spy_knife
+        End If
+
+    End Sub
+    Private Sub SpyHideMeleeInspect_CheckedChanged(sender As Object, e As EventArgs) Handles SpyHideMeleeInspect.CheckedChanged, SpyHideMeleeInspect.MouseEnter
+        If SpyHideMeleeInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.spy_blank
+        Else
+            GuidePictureBox.Image = My.Resources.spy_knife_inspect
+        End If
+
+    End Sub
+    Private Sub EngineerHideShotguns_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHideShotguns.CheckedChanged, EngineerHideShotguns.MouseEnter
+        If EngineerHideShotguns.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_shotgun
+        End If
+
+    End Sub
+    Private Sub EngineerHidePomson_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHidePomson.CheckedChanged, EngineerHidePomson.MouseEnter
+        If EngineerHidePomson.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_pomson
+        End If
+
+    End Sub
+    Private Sub EngineerHidePrimaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHidePrimaryInspect.CheckedChanged, EngineerHidePrimaryInspect.MouseEnter
+        If EngineerHidePrimaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_shotgun_inspect
+        End If
+
+    End Sub
+    Private Sub EngineerHidePistols_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHidePistols.CheckedChanged, EngineerHidePistols.MouseEnter
+        If EngineerHidePistols.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_pistol
+        End If
+
+    End Sub
+    Private Sub EngineerHideWrangler_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHideWrangler.CheckedChanged, EngineerHideWrangler.MouseEnter
+        If EngineerHideWrangler.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_wrangler
+        End If
+
+    End Sub
+    Private Sub EngineerHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHideSecondaryInspect.CheckedChanged, EngineerHideSecondaryInspect.MouseEnter
+        If EngineerHideSecondaryInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_pistol_inspect
+        End If
+
+    End Sub
+    Private Sub EngineerHideWrenches_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHideWrenches.CheckedChanged, EngineerHideWrenches.MouseEnter
+        If EngineerHideWrenches.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_wrench
+        End If
+
+    End Sub
+    Private Sub EngineerHideGunslinger_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHideGunslinger.CheckedChanged, EngineerHideGunslinger.MouseEnter
+        If EngineerHideGunslinger.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_gunslinger
+        End If
+
+    End Sub
+    Private Sub EngineerHideMeleeInspect_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHideMeleeInspect.CheckedChanged, EngineerHideMeleeInspect.MouseEnter
+        If EngineerHideMeleeInspect.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_wrench_inspect
+        End If
+
+    End Sub
+    Private Sub EngineerHidePDA_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHidePDA.CheckedChanged, EngineerHidePDA.MouseEnter
+        If EngineerHidePDA.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_pda_build
+        End If
+
+    End Sub
+    Private Sub EngineerHideToolbox_CheckedChanged(sender As Object, e As EventArgs) Handles EngineerHideToolbox.CheckedChanged, EngineerHideToolbox.MouseEnter
+        If EngineerHideToolbox.Checked Then
+            GuidePictureBox.Image = My.Resources.engineer_blank
+        Else
+            GuidePictureBox.Image = My.Resources.engineer_toolbox
+        End If
+
+    End Sub
+
+    'End longass guide
+
+    Sub PreloaderInstall()
+        Dialog1.InfoBox.AppendText("Installing preloader... ")
+        Dim FBytes() As Byte = My.Resources.preload_room
+        Try
+            If System.IO.File.Exists(TF2Path + "\tf\maps\preload_room.bsp") = False Then
+                My.Computer.FileSystem.WriteAllBytes(TF2Path + "\tf\maps\preload_room.bsp", FBytes, True)
+            End If
+        Catch ex As Exception
+            Dialog1.InfoBox.AppendText("ERROR!")
+            Dialog1.OK_Button.Enabled = True
+            Exit Sub
+        End Try
+        Dialog1.InfoBox.AppendText("Done." + vbNewLine)
+
+        InputBox.Clear()
+        Dialog1.InfoBox.AppendText("Editing autoexec... ")
+
+        Dim AutoexecPath As String = TF2Path + "\tf\cfg\autoexec.cfg"
+        Try
+            If System.IO.File.Exists(AutoexecPath) = False Then
+                System.IO.File.Create(AutoexecPath).Dispose()
+            End If
+        Catch ex As Exception
+            Dialog1.InfoBox.AppendText("ERROR!")
+            Dialog1.OK_Button.Enabled = True
+            Exit Sub
+        End Try
+        Using sr As New StreamReader(AutoexecPath)
+            While Not sr.EndOfStream
+                InputBox.Text = sr.ReadToEnd
+            End While
+        End Using
+
+        For Each line As String In InputBox.Lines
+            If line.Contains("map_background preload_room; wait 10; disconnect") Then
+                Dialog1.InfoBox.AppendText("No edits necessary." + vbNewLine)
+                Exit Sub
+            End If
+        Next
+        InputBox.AppendText(vbNewLine + "map_background preload_room; wait 10; disconnect")
+
+        Dim file As System.IO.StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(AutoexecPath, False)
+        file.Write(InputBox.Text)
+        file.Close()
+        InputBox.Clear()
+        Dialog1.InfoBox.AppendText("Done." + vbNewLine)
+    End Sub
+
+    Sub PreloaderUninstall()
+        Try
+            If System.IO.File.Exists(TF2Path + "\tf\maps\preload_room.bsp") Then
+                Dialog1.InfoBox.AppendText("Preload map found. Deleting... ")
+                System.IO.File.Delete(TF2Path + "\tf\maps\preload_room.bsp")
+                Dialog1.InfoBox.AppendText("Done." + vbNewLine)
+            End If
+        Catch ex As Exception
+            Dialog1.InfoBox.AppendText("ERROR!")
+            Dialog1.OK_Button.Enabled = True
+            Exit Sub
+        End Try
+
+        InputBox.Clear()
+        Dialog1.InfoBox.AppendText("Cleaning up autoexec... ")
+
+        Dim AutoexecPath As String = TF2Path + "\tf\cfg\autoexec.cfg"
+        Try
+            If System.IO.File.Exists(AutoexecPath) = False Then
+                System.IO.File.Create(AutoexecPath).Dispose()
+            End If
+        Catch ex As Exception
+            Dialog1.InfoBox.AppendText("ERROR!")
+            Dialog1.OK_Button.Enabled = True
+            Exit Sub
+        End Try
+        Using sr As New StreamReader(AutoexecPath)
+            While Not sr.EndOfStream
+                InputBox.Text = sr.ReadToEnd
+            End While
+        End Using
+
+        Dim file As System.IO.StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(AutoexecPath, False)
+        file.Write(InputBox.Text.Replace("map_background preload_room; wait 10; disconnect", ""))
+        file.Close()
+        InputBox.Clear()
+        Dialog1.InfoBox.AppendText("Done." + vbNewLine)
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Timer1.Stop()
+        GuidePictureBox.Image = My.Resources.compviewmodelbannersmall
+    End Sub
+
+    Private Sub Form_MouseLeave(sender As Object, e As EventArgs) Handles MyBase.MouseLeave
+        Timer1.Start()
     End Sub
 End Class

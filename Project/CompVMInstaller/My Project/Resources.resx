@@ -121,4 +121,235 @@
   <data name="animations" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\animations.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="compviewmodelbannersmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compviewmodelbannersmall.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="demo_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\demo_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="demo_grenadelauncher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\demo_grenadelauncher.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="demo_grenadelauncher_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\demo_grenadelauncher_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="demo_melee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\demo_melee.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="demo_stickybomb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\demo_stickybomb.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="demo_stickybomb_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\demo_stickybomb_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_gunslinger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_gunslinger.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_pda_build" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_pda_build.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_pda_destruct" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_pda_destruct.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_pistol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_pistol.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_pistol_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_pistol_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_pomson" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_pomson.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_shotgun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_shotgun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_shotgun_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_shotgun_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_toolbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_toolbox.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_wrangler" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_wrangler.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_wrench" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_wrench.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="engineer_wrench_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engineer_wrench_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heavy_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heavy_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heavy_fists" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heavy_fists.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heavy_minigun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heavy_minigun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heavy_minigun_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heavy_minigun_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heavy_sandvich" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heavy_sandvich.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heavy_shotgun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heavy_shotgun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heavy_shotgun_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heavy_shotgun_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medic_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medic_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medic_medigun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medic_medigun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medic_medigun_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medic_medigun_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medic_melee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medic_melee.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medic_syringegun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medic_syringegun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="preload_room" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\preload_room.bsp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pyro_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pyro_flamethrower" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_flamethrower.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pyro_flamethrower_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_flamethrower_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pyro_flaregun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_flaregun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pyro_melee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_melee.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pyro_shotgun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_shotgun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pyro_shotgun_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_shotgun_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_drink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_drink.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_fan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_fan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_melee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_melee.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_milk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_milk.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_pistol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_pistol.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_pistol_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_pistol_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_push" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_push.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_scattergun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_scattergun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_scattergun_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_scattergun_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scout_shortstop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scout_shortstop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sniper_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sniper_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sniper_huntsman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sniper_huntsman.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sniper_jarate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sniper_jarate.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sniper_melee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sniper_melee.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sniper_smg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sniper_smg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sniper_smg_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sniper_smg_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sniper_sniperrifle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sniper_sniperrifle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sniper_sniperrifle_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sniper_sniperrifle_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_banner.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_bison" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_bison.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_melee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_melee.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_original" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_original.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_rocketlauncher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_rocketlauncher.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_rocketlauncher_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_rocketlauncher_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_shotgun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_shotgun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldier_shotgun_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soldier_shotgun_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_deadringer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_deadringer.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_disguisekit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_disguisekit.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_inviswatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_inviswatch.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_knife" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_knife.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_knife_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_knife_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_revolver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_revolver.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_revolver_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_revolver_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spy_sapper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spy_sapper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

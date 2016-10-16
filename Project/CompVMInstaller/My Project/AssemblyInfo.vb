@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("CompetitiveViewmodelMaker")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("CompetitiveViewmodelMaker")> 
-<Assembly: AssemblyCopyright("Copyright ©  2016")> 
+<Assembly: AssemblyTitle("Competitive Viewmodel Installer")>
+<Assembly: AssemblyDescription("An installer for yttrium's hidden competitive TF2 viewmodels.")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("Competitive Viewmodel Installer")>
+<Assembly: AssemblyCopyright("© 2016 yttrium")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("5e88acc6-2cf9-4270-9d89-d208ce5de747")> 
+<Assembly: Guid("5e88acc6-2cf9-4270-9d89-d208ce5de747")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.3.0.0")>
+<Assembly: AssemblyFileVersion("1.3.0.0")>

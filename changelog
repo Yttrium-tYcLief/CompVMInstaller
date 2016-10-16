@@ -1,3 +1,11 @@
+1.3
+Added a new About window.
+Added a visual image guide.
+Included the installation of a preloader during the compilation process.
+	This adds preload_room.bsp to the Maps folder, and adds the following line to autoexec.cfg:
+		map_background preload_room; wait 10; disconnect
+Updated for the most recent viewmodel changes (as of 10/16/2016).
+
 1.2
 The install/uninstall progress dialog is now Always On Top.
 Updated animation files to support the July 28, 2016 patch.
