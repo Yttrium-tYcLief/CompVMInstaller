@@ -5,7 +5,7 @@ Imports System.IO.Compression
 Public Class Form2
 
     Const DevMode As Boolean = False
-    Public Const Version As Double = 1.3
+    Public Const Version As String = "1.3.1"
 
     Dim TF2Path As String = ""
     Dim FileName As String = ""
@@ -19,6 +19,8 @@ Public Class Form2
     Dim PyroChanged As Boolean = False
     Dim SpyChanged As Boolean = False
     Dim EngineerChanged As Boolean = False
+
+    Dim shObj As Object = Activator.CreateInstance(Type.GetTypeFromProgID("Shell.Application"))
 
     Private Sub TF2FolderBtn_Click(sender As Object, e As EventArgs) Handles TF2FolderBtn.Click
         Dim OpenFolderDialog1 As New FolderBrowserDialog()
@@ -98,7 +100,7 @@ Public Class Form2
             OutputBox.AppendText(vbNewLine + "  time " + x.ToString)
         Next
 
-        OutputBox.AppendText(vbNewLine + "end")
+        OutputBox.AppendText(vbNewLine + "End")
 
     End Sub
 
@@ -113,8 +115,13 @@ Public Class Form2
             TmpPath = Path.GetTempPath
         Catch ex As Exception
         End Try
+        If File.Exists(TmpPath + "\animations.zip") Then File.Delete(TmpPath + "\animations.zip")
         My.Computer.FileSystem.WriteAllBytes(TmpPath + "\animations.zip", FBytes, True)
         ZipFile.ExtractToDirectory(TmpPath + "\animations.zip", TF2Path + "\tf\tmpcmpvm")
+
+        'Dim output As Object = shObj.NameSpace(TF2Path + "\tf\tmpcmpvm")
+        'Dim input As Object = shObj.NameSpace(TmpPath + "\animations.zip")
+        'output.CopyHere((input.Items), 4)
     End Sub
 
     Sub CheckForChanges()
@@ -244,7 +251,7 @@ Public Class Form2
     End Sub
 
     Sub CompileModel(TfClass As String)
-        Dialog1.InfoBox.AppendText("Compiling model for class:  " + TfClass + "... ")
+        Dialog1.InfoBox.AppendText("Compiling model For Class:  " + TfClass + "... ")
         Dim Mdlstudio As New Process
         Mdlstudio.StartInfo = New ProcessStartInfo(TF2Path + "\bin\studiomdl.exe")
         Mdlstudio.StartInfo.Arguments = "-game """ + TF2Path + "\tf"" -nop4 -verbose """ + TF2Path + "\tf\tmpcmpvm\c_" + TfClass.ToLower + "_animations.qc"""
@@ -921,6 +928,7 @@ Public Class Form2
     Private Sub CleanUp()
         Dialog1.InfoBox.AppendText("Cleaning up... ")
         Try
+            If File.Exists(Path.GetTempPath + "\animations.zip") Then File.Delete(Path.GetTempPath + "\animations.zip")
             My.Computer.FileSystem.DeleteDirectory(TF2Path + "\tf\tmpcmpvm", FileIO.DeleteDirectoryOption.DeleteAllContents)
             My.Computer.FileSystem.DeleteDirectory(TF2Path + "\tf\custom\compviewmodels", FileIO.DeleteDirectoryOption.DeleteAllContents)
         Catch ex As Exception

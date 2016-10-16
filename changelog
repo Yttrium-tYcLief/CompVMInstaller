@@ -1,3 +1,6 @@
+1.3.1
+Fixed an issue where trying to install the mod a second time would end with an End Of Central Directory error.
+
 1.3
 Added a new About window.
 Added a visual image guide.
