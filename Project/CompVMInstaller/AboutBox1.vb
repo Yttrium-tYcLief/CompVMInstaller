@@ -13,7 +13,11 @@
         ' TODO: Customize the application's assembly information in the "Application" pane of the project 
         '    properties dialog (under the "Project" menu).
         Label1.Text = My.Application.Info.ProductName
-        Label3.Text = "Version " & Form2.Version
+        If Form2.DevMode Then
+            Label3.Text = "Version " & Form2.Version & " - DEV MODE"
+        Else
+            Label3.Text = "Version " & Form2.Version
+        End If
         Label2.Text = My.Application.Info.Copyright
     End Sub
 

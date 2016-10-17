@@ -23,6 +23,7 @@ Partial Class Form2
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.Wizard = New System.Windows.Forms.TabPage()
         Me.Advanced = New System.Windows.Forms.TabPage()
@@ -1979,6 +1980,7 @@ Partial Class Form2
         Me.ClientSize = New System.Drawing.Size(589, 607)
         Me.Controls.Add(Me.AboutButton)
         Me.Controls.Add(Me.TabControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(550, 360)
         Me.Name = "Form2"
         Me.Text = "Competitive Viewmodel Installer"

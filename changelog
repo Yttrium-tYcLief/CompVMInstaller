@@ -1,3 +1,9 @@
+1.3.2
+Fixed an issue where models would be rotated by 90 degrees at the start of an animation.
+Fixed some small grammatical mistakes.
+Added a real icon.
+Updated the localization files.
+
 1.3.1
 Fixed an issue where trying to install the mod a second time would end with an End Of Central Directory error.
 
@@ -7,11 +13,13 @@ Added a visual image guide.
 Included the installation of a preloader during the compilation process.
 	This adds preload_room.bsp to the Maps folder, and adds the following line to autoexec.cfg:
 		map_background preload_room; wait 10; disconnect
+	While this bypasses any sv_pure restrictions, it unfortunately does add loading time during TF2's initial boot.
 Updated for the most recent viewmodel changes (as of 10/16/2016).
 
 1.2
 The install/uninstall progress dialog is now Always On Top.
 Updated animation files to support the July 28, 2016 patch.
+Updated the localization files.
 
 1.1
 Added dedicated "uninstall" button.
@@ -21,6 +29,7 @@ Mod now installs as a single VPK archive rather than a set of loose folders and 
 	This makes it easier to distribute configurations and wipe over old installs.
 The installer now saves your TF2 directory to the registry, and attempts to recall it upon future loads.
 	The registry path is HKEY_CURRENT_USER\Software\CompVMInstaller\TF2Path
+Updated the localization files.
 	
 1.0
 Base release.

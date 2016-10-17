@@ -53,6 +53,126 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutScatterguns() As Boolean
+            Get
+                Return CType(Me("ScoutScatterguns"),Boolean)
+            End Get
+            Set
+                Me("ScoutScatterguns") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutDoubleBarrels() As Boolean
+            Get
+                Return CType(Me("ScoutDoubleBarrels"),Boolean)
+            End Get
+            Set
+                Me("ScoutDoubleBarrels") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutShortstop() As Boolean
+            Get
+                Return CType(Me("ScoutShortstop"),Boolean)
+            End Get
+            Set
+                Me("ScoutShortstop") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutShortstopPush() As Boolean
+            Get
+                Return CType(Me("ScoutShortstopPush"),Boolean)
+            End Get
+            Set
+                Me("ScoutShortstopPush") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ScoutPrimaryInspects() As String
+            Get
+                Return CType(Me("ScoutPrimaryInspects"),String)
+            End Get
+            Set
+                Me("ScoutPrimaryInspects") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ScoutPistols() As String
+            Get
+                Return CType(Me("ScoutPistols"),String)
+            End Get
+            Set
+                Me("ScoutPistols") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ScoutThrowables() As String
+            Get
+                Return CType(Me("ScoutThrowables"),String)
+            End Get
+            Set
+                Me("ScoutThrowables") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ScoutConsumables() As String
+            Get
+                Return CType(Me("ScoutConsumables"),String)
+            End Get
+            Set
+                Me("ScoutConsumables") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ScoutSecondaryInspects() As String
+            Get
+                Return CType(Me("ScoutSecondaryInspects"),String)
+            End Get
+            Set
+                Me("ScoutSecondaryInspects") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ScoutMelee() As String
+            Get
+                Return CType(Me("ScoutMelee"),String)
+            End Get
+            Set
+                Me("ScoutMelee") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

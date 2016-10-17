@@ -20,9 +20,13 @@ C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\bin\Debug
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\bin\Debug\CompVMInstaller.xml
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.vbprojResolveAssemblyReference.cache
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.Dialog1.resources
-C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.Form1.resources
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.Form2.resources
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.Resources.resources
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.vbproj.GenerateResource.Cache
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.Form3.resources
 C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.AboutBox1.resources
+C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\bin\Debug\CompVMInstaller.exe.manifest
+C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\bin\Debug\CompVMInstaller.application
+C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.exe.manifest
+C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.application
+C:\Users\alex\Documents\GitHub\CompVMInstaller\Project\CompVMInstaller\obj\Debug\CompVMInstaller.TrustInfo.xml

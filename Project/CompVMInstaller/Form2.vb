@@ -4,8 +4,8 @@ Imports System.IO.Compression
 
 Public Class Form2
 
-    Const DevMode As Boolean = False
-    Public Const Version As String = "1.3.1"
+    Public DevMode As Boolean = False
+    Public Version As String = My.Application.Info.Version.ToString
 
     Dim TF2Path As String = ""
     Dim FileName As String = ""
@@ -19,8 +19,6 @@ Public Class Form2
     Dim PyroChanged As Boolean = False
     Dim SpyChanged As Boolean = False
     Dim EngineerChanged As Boolean = False
-
-    Dim shObj As Object = Activator.CreateInstance(Type.GetTypeFromProgID("Shell.Application"))
 
     Private Sub TF2FolderBtn_Click(sender As Object, e As EventArgs) Handles TF2FolderBtn.Click
         Dim OpenFolderDialog1 As New FolderBrowserDialog()
@@ -42,10 +40,17 @@ Public Class Form2
     End Sub
 
     Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+#If DEBUG Then
+        DevMode = True
+#End If
+
         If DevMode = False Then
             TabControl1.TabPages.RemoveAt(2)
-            TabControl1.TabPages.RemoveAt(0)
+            Me.Text = My.Application.Info.Title
+        Else
+            Me.Text = My.Application.Info.Title + " - DEV MODE"
         End If
+        TabControl1.TabPages.RemoveAt(0)
 
         If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing) Is Nothing Then
             TF2FolderBtn.Enabled = True
@@ -251,7 +256,7 @@ Public Class Form2
     End Sub
 
     Sub CompileModel(TfClass As String)
-        Dialog1.InfoBox.AppendText("Compiling model For Class:  " + TfClass + "... ")
+        Dialog1.InfoBox.AppendText("Compiling model for class:  " + TfClass + "... ")
         Dim Mdlstudio As New Process
         Mdlstudio.StartInfo = New ProcessStartInfo(TF2Path + "\bin\studiomdl.exe")
         Mdlstudio.StartInfo.Arguments = "-game """ + TF2Path + "\tf"" -nop4 -verbose """ + TF2Path + "\tf\tmpcmpvm\c_" + TfClass.ToLower + "_animations.qc"""
@@ -335,7 +340,11 @@ Public Class Form2
         RenderModels()
         CopyModels()
         PackageMod()
-        PreloaderInstall()
+        If DevMode Then
+            Dialog1.InfoBox.AppendText("Dev mode enabled, skipping preloader." + vbNewLine)
+        Else
+            PreloaderInstall()
+        End If
         CleanUp()
 
         Dialog1.InfoBox.AppendText(vbNewLine + "Mod installed.")
@@ -1562,12 +1571,16 @@ Public Class Form2
         Dialog1.InfoBox.AppendText("Done." + vbNewLine)
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Timer1.Stop()
-        GuidePictureBox.Image = My.Resources.compviewmodelbannersmall
-    End Sub
+    'Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    '    Timer1.Stop()
+    '    GuidePictureBox.Image = My.Resources.compviewmodelbannersmall
+    'End Sub
 
-    Private Sub Form_MouseLeave(sender As Object, e As EventArgs) Handles MyBase.MouseLeave
-        Timer1.Start()
-    End Sub
+    'Private Sub Form_MouseLeave(sender As Object, e As EventArgs) Handles MyBase.MouseLeave
+    '    Timer1.Start()
+    'End Sub
+
+    'Private Sub Form_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
+    '    Timer1.Stop()
+    'End Sub
 End Class
