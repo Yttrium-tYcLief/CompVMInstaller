@@ -63,6 +63,7 @@ Partial Class Dialog1
         Me.MinimizeBox = False
         Me.Name = "Dialog1"
         Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Progress"
         Me.ResumeLayout(False)
         Me.PerformLayout()

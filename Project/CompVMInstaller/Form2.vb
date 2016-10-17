@@ -23,18 +23,15 @@ Public Class Form2
     Private Sub TF2FolderBtn_Click(sender As Object, e As EventArgs) Handles TF2FolderBtn.Click
         Dim OpenFolderDialog1 As New FolderBrowserDialog()
         If OpenFolderDialog1.ShowDialog() = DialogResult.OK Then
-            If File.Exists(OpenFolderDialog1.SelectedPath + "\bin\vpk.exe") And File.Exists(OpenFolderDialog1.SelectedPath + "\bin\studiomdl.exe") Then
+            If CheckValidPath(OpenFolderDialog1.SelectedPath) Then
                 MessageBox.Show("Valid TF2 installation found.", "Success")
                 TF2Path = OpenFolderDialog1.SelectedPath
-                RenderButton.Enabled = True
-                If Not My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing) Is Nothing Then
-                    My.Computer.Registry.CurrentUser.CreateSubKey("Software\CompVMInstaller")
-                End If
-                My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", TF2Path)
+                My.Settings.TF2Path = TF2Path
+                InstallButton.Enabled = True
                 TF2FolderBtn.Enabled = True
             Else
                 MessageBox.Show("Invalid TF2 path!", "Error")
-                RenderButton.Enabled = False
+                InstallButton.Enabled = False
             End If
         End If
     End Sub
@@ -52,18 +49,61 @@ Public Class Form2
         End If
         TabControl1.TabPages.RemoveAt(0)
 
-        If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing) Is Nothing Then
-            TF2FolderBtn.Enabled = True
-        Else
-            Dim readValue = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing)
-            If File.Exists(readValue + "\bin\vpk.exe") And File.Exists(readValue + "\bin\studiomdl.exe") Then
-                TF2Path = readValue
-                RenderButton.Enabled = True
+        If My.Settings.TF2Path = "none" Then
+            Dim regkey As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\CompVMInstaller", "TF2Path", Nothing)
+            If regkey IsNot Nothing Then
+                MessageBox.Show("Importing TF2 path from old installer version.", "Information")
+                If CheckValidPath(regkey) Then
+                    MessageBox.Show("Successfully imported TF2 path from old installer version.", "Success")
+                    TF2Path = regkey
+                    My.Settings.TF2Path = TF2Path
+                    My.Computer.Registry.CurrentUser.DeleteSubKey("Software\CompVMInstaller")
+                    PathLabel.Text = "Previously stored TF2 path recalled."
+                    TF2FolderBtn.Enabled = False
+                    InstallButton.Enabled = True
+                Else
+                    MessageBox.Show("TF2 path from old installer version is invalid!", "Error")
+                    My.Computer.Registry.CurrentUser.DeleteSubKey("Software\CompVMInstaller")
+                    PathLabel.Text = "Previously stored TF2 path is invalid."
+                    TF2FolderBtn.Enabled = True
+                    InstallButton.Enabled = False
+                End If
             Else
+                PathLabel.Text = "Please select your ""Team Fortress 2"" folder."
                 TF2FolderBtn.Enabled = True
+                InstallButton.Enabled = False
+            End If
+        Else
+            If CheckValidPath(My.Settings.TF2Path) Then
+                PathLabel.Text = "Previously stored TF2 path recalled."
+                TF2Path = My.Settings.TF2Path
+                TF2FolderBtn.Enabled = False
+                InstallButton.Enabled = True
+            Else
+                PathLabel.Text = "Previously stored TF2 path is invalid."
+                MessageBox.Show("Previously stored TF2 path is invalid.", "Error")
+                TF2FolderBtn.Enabled = True
+                InstallButton.Enabled = False
             End If
         End If
 
+        RecallSettings()
+
+        GuidePictureBox.Image = My.Resources.scout_blank
+
+    End Sub
+
+    Private Function CheckValidPath(Path As String) As Boolean
+        If File.Exists(Path + "\bin\vpk.exe") And File.Exists(Path + "\bin\studiomdl.exe") Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Private Sub Form_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
+
+        StoreSettings()
 
     End Sub
 
@@ -244,7 +284,6 @@ Public Class Form2
             And EngineerHideShortCircuit.Checked = False _
             And EngineerHideSecondaryInspect.Checked = False _
             And EngineerHideWrenches.Checked = False _
-            And EngineerHideGunslinger.Checked = False _
             And EngineerHideMeleeInspect.Checked = False _
             And EngineerHidePDA.Checked = False _
             And EngineerHideToolbox.Checked = False Then
@@ -328,9 +367,10 @@ Public Class Form2
 
     End Sub
 
-    Private Sub RenderButton_Click(sender As Object, e As EventArgs) Handles RenderButton.Click
+    Private Sub InstallButton_Click(sender As Object, e As EventArgs) Handles InstallButton.Click
 
         Dialog1.Show()
+        Dialog1.Refresh()
         Dialog1.InfoBox.Clear()
         Dialog1.InfoBox.AppendText("Extracting files... ")
         PrepFolders()
@@ -984,7 +1024,7 @@ Public Class Form2
         End Try
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles AboutButton.Click
+    Private Sub AboutButton_Click(sender As Object, e As EventArgs) Handles AboutButton.Click
         AboutBox1.ShowDialog()
     End Sub
 
@@ -1583,4 +1623,174 @@ Public Class Form2
     'Private Sub Form_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
     '    Timer1.Stop()
     'End Sub
+
+    Private Sub RecallSettings()
+        ScoutHideScatterguns.Checked = My.Settings.ScoutScatterguns
+        ScoutHideDoubleBarrels.Checked = My.Settings.ScoutDoubleBarrels
+        ScoutHideShortstop.Checked = My.Settings.ScoutShortstop
+        ScoutHideShortstopPush.Checked = My.Settings.ScoutShortstopPush
+        ScoutHidePrimaryInspect.Checked = My.Settings.ScoutPrimary
+        ScoutHidePistols.Checked = My.Settings.ScoutPistols
+        ScoutHideThrowables.Checked = My.Settings.ScoutThrowables
+        ScoutHideDrinks.Checked = My.Settings.ScoutConsumables
+        ScoutHideSecondaryInspect.Checked = My.Settings.ScoutSecondary
+        ScoutHideMelee.Checked = My.Settings.ScoutMelee
+
+        SniperHideRifles.Checked = My.Settings.SniperRifles
+        SniperHideHuntsman.Checked = My.Settings.SniperHuntsman
+        SniperHidePrimaryInspect.Checked = My.Settings.SniperPrimary
+        SniperHideSMGs.Checked = My.Settings.SniperSMGs
+        SniperHideThrowables.Checked = My.Settings.SniperThrowables
+        SniperHideSecondaryInspect.Checked = My.Settings.SniperSecondary
+        SniperHideMelee.Checked = My.Settings.SniperMelee
+
+        SoldierHideRockets.Checked = My.Settings.SoldierRocketLaunchers
+        SoldierHideOriginal.Checked = My.Settings.SoldierOriginal
+        ScoutHidePrimaryInspect.Checked = My.Settings.SoldierPrimary
+        SoldierHideShotguns.Checked = My.Settings.SoldierShotguns
+        SoldierHideBanners.Checked = My.Settings.SoldierBanners
+        SoldierHideBison.Checked = My.Settings.SoldierBison
+        SoldierHideSecondaryInspect.Checked = My.Settings.SoldierSecondary
+        SoldierHideMelee.Checked = My.Settings.SoldierMelee
+
+        DemomanHideGrenades.Checked = My.Settings.DemoGrenades
+        DemomanHidePrimaryInspect.Checked = My.Settings.DemoPrimary
+        DemomanHideStickybombs.Checked = My.Settings.DemoStickybombs
+        DemomanHideSecondaryInspect.Checked = My.Settings.DemoSecondary
+        DemomanHideMelee.Checked = My.Settings.DemoMelee
+
+        MedicHidePrimaries.Checked = My.Settings.MedicSyringes
+        MedicHidePrimaryInspect.Checked = My.Settings.MedicPrimary
+        MedicHideMediguns.Checked = My.Settings.MedicMediguns
+        MedicHideSecondaryInspect.Checked = My.Settings.MedicSecondary
+        MedicHideMelee.Checked = My.Settings.MedicMelee
+
+        HeavyHideMiniguns.Checked = My.Settings.HeavyMiniguns
+        HeavyHidePrimaryInspect.Checked = My.Settings.HeavyPrimary
+        HeavyHideShotguns.Checked = My.Settings.HeavyShotguns
+        HeavyHideConsumables.Checked = My.Settings.HeavyConsumables
+        HeavyHideSecondaryInspect.Checked = My.Settings.HeavySecondary
+        HeavyHideMelee.Checked = My.Settings.HeavyMelee
+
+        PyroHideFlamethrowers.Checked = My.Settings.PyroFlamethrowers
+        PyroHidePrimaryInspect.Checked = My.Settings.PyroPrimary
+        PyroHideShotguns.Checked = My.Settings.PyroShotguns
+        PyroHideFlareGuns.Checked = My.Settings.PyroFlareguns
+        PyroHideSecondaryInspect.Checked = My.Settings.PyroSecondary
+        PyroHideMelee.Checked = My.Settings.PyroMelee
+
+        SpyHideRevolvers.Checked = My.Settings.SpyRevolvers
+        SpyHidePrimaryInspect.Checked = My.Settings.SpyPrimary
+        SpyHideSappers.Checked = My.Settings.SpySappers
+        SpyHideMelee.Checked = My.Settings.SpyMelee
+        SpyHideMeleeInspect.Checked = My.Settings.SpyMeleeInspects
+
+        EngineerHideShotguns.Checked = My.Settings.EngieShotguns
+        EngineerHidePomson.Checked = My.Settings.EngiePomson
+        EngineerHidePrimaryInspect.Checked = My.Settings.EngiePrimary
+        EngineerHidePistols.Checked = My.Settings.EngiePistols
+        EngineerHideGunslinger.Checked = My.Settings.EngieGunslinger
+        EngineerHideSecondaryInspect.Checked = My.Settings.EngieSecondary
+        EngineerHideWrenches.Checked = My.Settings.EngieWrenches
+        EngineerHideMeleeInspect.Checked = My.Settings.EngieMelee
+        EngineerHidePDA.Checked = My.Settings.EngiePDA
+        EngineerHideToolbox.Checked = My.Settings.EngieToolbox
+    End Sub
+
+    Private Sub StoreSettings()
+        My.Settings.ScoutScatterguns = ScoutHideScatterguns.Checked
+        My.Settings.ScoutDoubleBarrels = ScoutHideDoubleBarrels.Checked
+        My.Settings.ScoutShortstop = ScoutHideShortstop.Checked
+        My.Settings.ScoutShortstopPush = ScoutHideShortstopPush.Checked
+        My.Settings.ScoutPrimary = ScoutHidePrimaryInspect.Checked
+        My.Settings.ScoutPistols = ScoutHidePistols.Checked
+        My.Settings.ScoutThrowables = ScoutHideThrowables.Checked
+        My.Settings.ScoutConsumables = ScoutHideDrinks.Checked
+        My.Settings.ScoutSecondary = ScoutHideSecondaryInspect.Checked
+        My.Settings.ScoutMelee = ScoutHideMelee.Checked
+
+        My.Settings.SniperRifles = SniperHideRifles.Checked
+        My.Settings.SniperHuntsman = SniperHideHuntsman.Checked
+        My.Settings.SniperPrimary = SniperHidePrimaryInspect.Checked
+        My.Settings.SniperSMGs = SniperHideSMGs.Checked
+        My.Settings.SniperThrowables = SniperHideThrowables.Checked
+        My.Settings.SniperSecondary = SniperHideSecondaryInspect.Checked
+        My.Settings.SniperMelee = SniperHideMelee.Checked
+
+        My.Settings.SoldierRocketLaunchers = SoldierHideRockets.Checked
+        My.Settings.SoldierOriginal = SoldierHideOriginal.Checked
+        My.Settings.SoldierPrimary = ScoutHidePrimaryInspect.Checked
+        My.Settings.SoldierShotguns = SoldierHideShotguns.Checked
+        My.Settings.SoldierBanners = SoldierHideBanners.Checked
+        My.Settings.SoldierBison = SoldierHideBison.Checked
+        My.Settings.SoldierSecondary = SoldierHideSecondaryInspect.Checked
+        My.Settings.SoldierMelee = SoldierHideMelee.Checked
+
+        My.Settings.DemoGrenades = DemomanHideGrenades.Checked
+        My.Settings.DemoPrimary = DemomanHidePrimaryInspect.Checked
+        My.Settings.DemoStickybombs = DemomanHideStickybombs.Checked
+        My.Settings.DemoSecondary = DemomanHideSecondaryInspect.Checked
+        My.Settings.DemoMelee = DemomanHideMelee.Checked
+
+        My.Settings.MedicSyringes = MedicHidePrimaries.Checked
+        My.Settings.MedicPrimary = MedicHidePrimaryInspect.Checked
+        My.Settings.MedicMediguns = MedicHideMediguns.Checked
+        My.Settings.MedicSecondary = MedicHideSecondaryInspect.Checked
+        My.Settings.MedicMelee = MedicHideMelee.Checked
+
+        My.Settings.HeavyMiniguns = HeavyHideMiniguns.Checked
+        My.Settings.HeavyPrimary = HeavyHidePrimaryInspect.Checked
+        My.Settings.HeavyShotguns = HeavyHideShotguns.Checked
+        My.Settings.HeavyConsumables = HeavyHideConsumables.Checked
+        My.Settings.HeavySecondary = HeavyHideSecondaryInspect.Checked
+        My.Settings.HeavyMelee = HeavyHideMelee.Checked
+
+        My.Settings.PyroFlamethrowers = PyroHideFlamethrowers.Checked
+        My.Settings.PyroPrimary = PyroHidePrimaryInspect.Checked
+        My.Settings.PyroShotguns = PyroHideShotguns.Checked
+        My.Settings.PyroFlareguns = PyroHideFlareGuns.Checked
+        My.Settings.PyroSecondary = PyroHideSecondaryInspect.Checked
+        My.Settings.PyroMelee = PyroHideMelee.Checked
+
+        My.Settings.SpyRevolvers = SpyHideRevolvers.Checked
+        My.Settings.SpyPrimary = SpyHidePrimaryInspect.Checked
+        My.Settings.SpySappers = SpyHideSappers.Checked
+        My.Settings.SpyMelee = SpyHideMelee.Checked
+        My.Settings.SpyMeleeInspects = SpyHideMeleeInspect.Checked
+
+        My.Settings.EngieShotguns = EngineerHideShotguns.Checked
+        My.Settings.EngiePomson = EngineerHidePomson.Checked
+        My.Settings.EngiePrimary = EngineerHidePrimaryInspect.Checked
+        My.Settings.EngiePistols = EngineerHidePistols.Checked
+        My.Settings.EngieGunslinger = EngineerHideGunslinger.Checked
+        My.Settings.EngieSecondary = EngineerHideSecondaryInspect.Checked
+        My.Settings.EngieWrenches = EngineerHideWrenches.Checked
+        My.Settings.EngieMelee = EngineerHideMeleeInspect.Checked
+        My.Settings.EngiePDA = EngineerHidePDA.Checked
+        My.Settings.EngieToolbox = EngineerHideToolbox.Checked
+    End Sub
+
+    Private Sub TabChanged(sender As Object, e As EventArgs) Handles ClassTabs.SelectedIndexChanged
+        Select Case ClassTabs.SelectedIndex
+            Case 0
+                GuidePictureBox.Image = My.Resources.scout_blank
+            Case 1
+                GuidePictureBox.Image = My.Resources.sniper_blank
+            Case 2
+                GuidePictureBox.Image = My.Resources.soldier_blank
+            Case 3
+                GuidePictureBox.Image = My.Resources.demo_blank
+            Case 4
+                GuidePictureBox.Image = My.Resources.medic_blank
+            Case 5
+                GuidePictureBox.Image = My.Resources.heavy_blank
+            Case 6
+                GuidePictureBox.Image = My.Resources.pyro_blank
+            Case 7
+                GuidePictureBox.Image = My.Resources.spy_blank
+            Case 8
+                GuidePictureBox.Image = My.Resources.engineer_blank
+        End Select
+
+    End Sub
 End Class

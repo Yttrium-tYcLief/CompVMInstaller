@@ -104,22 +104,22 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ScoutPrimaryInspects() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutPrimary() As Boolean
             Get
-                Return CType(Me("ScoutPrimaryInspects"),String)
+                Return CType(Me("ScoutPrimary"),Boolean)
             End Get
             Set
-                Me("ScoutPrimaryInspects") = value
+                Me("ScoutPrimary") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ScoutPistols() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutPistols() As Boolean
             Get
-                Return CType(Me("ScoutPistols"),String)
+                Return CType(Me("ScoutPistols"),Boolean)
             End Get
             Set
                 Me("ScoutPistols") = value
@@ -128,10 +128,10 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ScoutThrowables() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutThrowables() As Boolean
             Get
-                Return CType(Me("ScoutThrowables"),String)
+                Return CType(Me("ScoutThrowables"),Boolean)
             End Get
             Set
                 Me("ScoutThrowables") = value
@@ -140,10 +140,10 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ScoutConsumables() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutConsumables() As Boolean
             Get
-                Return CType(Me("ScoutConsumables"),String)
+                Return CType(Me("ScoutConsumables"),Boolean)
             End Get
             Set
                 Me("ScoutConsumables") = value
@@ -152,25 +152,673 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ScoutSecondaryInspects() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutSecondary() As Boolean
             Get
-                Return CType(Me("ScoutSecondaryInspects"),String)
+                Return CType(Me("ScoutSecondary"),Boolean)
             End Get
             Set
-                Me("ScoutSecondaryInspects") = value
+                Me("ScoutSecondary") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ScoutMelee() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ScoutMelee() As Boolean
             Get
-                Return CType(Me("ScoutMelee"),String)
+                Return CType(Me("ScoutMelee"),Boolean)
             End Get
             Set
                 Me("ScoutMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SniperRifles() As Boolean
+            Get
+                Return CType(Me("SniperRifles"),Boolean)
+            End Get
+            Set
+                Me("SniperRifles") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SniperHuntsman() As Boolean
+            Get
+                Return CType(Me("SniperHuntsman"),Boolean)
+            End Get
+            Set
+                Me("SniperHuntsman") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SniperPrimary() As Boolean
+            Get
+                Return CType(Me("SniperPrimary"),Boolean)
+            End Get
+            Set
+                Me("SniperPrimary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SniperSMGs() As Boolean
+            Get
+                Return CType(Me("SniperSMGs"),Boolean)
+            End Get
+            Set
+                Me("SniperSMGs") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SniperThrowables() As Boolean
+            Get
+                Return CType(Me("SniperThrowables"),Boolean)
+            End Get
+            Set
+                Me("SniperThrowables") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SniperSecondary() As Boolean
+            Get
+                Return CType(Me("SniperSecondary"),Boolean)
+            End Get
+            Set
+                Me("SniperSecondary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SniperMelee() As Boolean
+            Get
+                Return CType(Me("SniperMelee"),Boolean)
+            End Get
+            Set
+                Me("SniperMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SoldierRocketLaunchers() As Boolean
+            Get
+                Return CType(Me("SoldierRocketLaunchers"),Boolean)
+            End Get
+            Set
+                Me("SoldierRocketLaunchers") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SoldierOriginal() As Boolean
+            Get
+                Return CType(Me("SoldierOriginal"),Boolean)
+            End Get
+            Set
+                Me("SoldierOriginal") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SoldierPrimary() As Boolean
+            Get
+                Return CType(Me("SoldierPrimary"),Boolean)
+            End Get
+            Set
+                Me("SoldierPrimary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SoldierShotguns() As Boolean
+            Get
+                Return CType(Me("SoldierShotguns"),Boolean)
+            End Get
+            Set
+                Me("SoldierShotguns") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SoldierBanners() As Boolean
+            Get
+                Return CType(Me("SoldierBanners"),Boolean)
+            End Get
+            Set
+                Me("SoldierBanners") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SoldierBison() As Boolean
+            Get
+                Return CType(Me("SoldierBison"),Boolean)
+            End Get
+            Set
+                Me("SoldierBison") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SoldierSecondary() As Boolean
+            Get
+                Return CType(Me("SoldierSecondary"),Boolean)
+            End Get
+            Set
+                Me("SoldierSecondary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SoldierMelee() As Boolean
+            Get
+                Return CType(Me("SoldierMelee"),Boolean)
+            End Get
+            Set
+                Me("SoldierMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property DemoGrenades() As Boolean
+            Get
+                Return CType(Me("DemoGrenades"),Boolean)
+            End Get
+            Set
+                Me("DemoGrenades") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property DemoPrimary() As Boolean
+            Get
+                Return CType(Me("DemoPrimary"),Boolean)
+            End Get
+            Set
+                Me("DemoPrimary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property DemoStickybombs() As Boolean
+            Get
+                Return CType(Me("DemoStickybombs"),Boolean)
+            End Get
+            Set
+                Me("DemoStickybombs") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property DemoSecondary() As Boolean
+            Get
+                Return CType(Me("DemoSecondary"),Boolean)
+            End Get
+            Set
+                Me("DemoSecondary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property DemoMelee() As Boolean
+            Get
+                Return CType(Me("DemoMelee"),Boolean)
+            End Get
+            Set
+                Me("DemoMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property MedicPrimary() As Boolean
+            Get
+                Return CType(Me("MedicPrimary"),Boolean)
+            End Get
+            Set
+                Me("MedicPrimary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property MedicMediguns() As Boolean
+            Get
+                Return CType(Me("MedicMediguns"),Boolean)
+            End Get
+            Set
+                Me("MedicMediguns") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property MedicSecondary() As Boolean
+            Get
+                Return CType(Me("MedicSecondary"),Boolean)
+            End Get
+            Set
+                Me("MedicSecondary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property MedicMelee() As Boolean
+            Get
+                Return CType(Me("MedicMelee"),Boolean)
+            End Get
+            Set
+                Me("MedicMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property HeavyMiniguns() As Boolean
+            Get
+                Return CType(Me("HeavyMiniguns"),Boolean)
+            End Get
+            Set
+                Me("HeavyMiniguns") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property HeavyPrimary() As Boolean
+            Get
+                Return CType(Me("HeavyPrimary"),Boolean)
+            End Get
+            Set
+                Me("HeavyPrimary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property HeavyShotguns() As Boolean
+            Get
+                Return CType(Me("HeavyShotguns"),Boolean)
+            End Get
+            Set
+                Me("HeavyShotguns") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property HeavyConsumables() As Boolean
+            Get
+                Return CType(Me("HeavyConsumables"),Boolean)
+            End Get
+            Set
+                Me("HeavyConsumables") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property HeavySecondary() As Boolean
+            Get
+                Return CType(Me("HeavySecondary"),Boolean)
+            End Get
+            Set
+                Me("HeavySecondary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property HeavyMelee() As Boolean
+            Get
+                Return CType(Me("HeavyMelee"),Boolean)
+            End Get
+            Set
+                Me("HeavyMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property PyroFlamethrowers() As Boolean
+            Get
+                Return CType(Me("PyroFlamethrowers"),Boolean)
+            End Get
+            Set
+                Me("PyroFlamethrowers") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property PyroPrimary() As Boolean
+            Get
+                Return CType(Me("PyroPrimary"),Boolean)
+            End Get
+            Set
+                Me("PyroPrimary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property PyroShotguns() As Boolean
+            Get
+                Return CType(Me("PyroShotguns"),Boolean)
+            End Get
+            Set
+                Me("PyroShotguns") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property PyroFlareguns() As Boolean
+            Get
+                Return CType(Me("PyroFlareguns"),Boolean)
+            End Get
+            Set
+                Me("PyroFlareguns") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property PyroSecondary() As Boolean
+            Get
+                Return CType(Me("PyroSecondary"),Boolean)
+            End Get
+            Set
+                Me("PyroSecondary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property PyroMelee() As Boolean
+            Get
+                Return CType(Me("PyroMelee"),Boolean)
+            End Get
+            Set
+                Me("PyroMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SpyRevolvers() As Boolean
+            Get
+                Return CType(Me("SpyRevolvers"),Boolean)
+            End Get
+            Set
+                Me("SpyRevolvers") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SpyPrimary() As Boolean
+            Get
+                Return CType(Me("SpyPrimary"),Boolean)
+            End Get
+            Set
+                Me("SpyPrimary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SpySappers() As Boolean
+            Get
+                Return CType(Me("SpySappers"),Boolean)
+            End Get
+            Set
+                Me("SpySappers") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SpyMelee() As Boolean
+            Get
+                Return CType(Me("SpyMelee"),Boolean)
+            End Get
+            Set
+                Me("SpyMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property SpyMeleeInspects() As Boolean
+            Get
+                Return CType(Me("SpyMeleeInspects"),Boolean)
+            End Get
+            Set
+                Me("SpyMeleeInspects") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngieShotguns() As Boolean
+            Get
+                Return CType(Me("EngieShotguns"),Boolean)
+            End Get
+            Set
+                Me("EngieShotguns") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngiePomson() As Boolean
+            Get
+                Return CType(Me("EngiePomson"),Boolean)
+            End Get
+            Set
+                Me("EngiePomson") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngiePrimary() As Boolean
+            Get
+                Return CType(Me("EngiePrimary"),Boolean)
+            End Get
+            Set
+                Me("EngiePrimary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngiePistols() As Boolean
+            Get
+                Return CType(Me("EngiePistols"),Boolean)
+            End Get
+            Set
+                Me("EngiePistols") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngieWrangler() As Boolean
+            Get
+                Return CType(Me("EngieWrangler"),Boolean)
+            End Get
+            Set
+                Me("EngieWrangler") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngieSecondary() As Boolean
+            Get
+                Return CType(Me("EngieSecondary"),Boolean)
+            End Get
+            Set
+                Me("EngieSecondary") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngieWrenches() As Boolean
+            Get
+                Return CType(Me("EngieWrenches"),Boolean)
+            End Get
+            Set
+                Me("EngieWrenches") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngieGunslinger() As Boolean
+            Get
+                Return CType(Me("EngieGunslinger"),Boolean)
+            End Get
+            Set
+                Me("EngieGunslinger") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngieMelee() As Boolean
+            Get
+                Return CType(Me("EngieMelee"),Boolean)
+            End Get
+            Set
+                Me("EngieMelee") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngiePDA() As Boolean
+            Get
+                Return CType(Me("EngiePDA"),Boolean)
+            End Get
+            Set
+                Me("EngiePDA") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property EngieToolbox() As Boolean
+            Get
+                Return CType(Me("EngieToolbox"),Boolean)
+            End Get
+            Set
+                Me("EngieToolbox") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property MedicSyringes() As Boolean
+            Get
+                Return CType(Me("MedicSyringes"),Boolean)
+            End Get
+            Set
+                Me("MedicSyringes") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("none")>  _
+        Public Property TF2Path() As String
+            Get
+                Return CType(Me("TF2Path"),String)
+            End Get
+            Set
+                Me("TF2Path") = value
             End Set
         End Property
     End Class

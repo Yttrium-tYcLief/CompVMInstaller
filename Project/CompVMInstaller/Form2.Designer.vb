@@ -27,7 +27,7 @@ Partial Class Form2
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.Wizard = New System.Windows.Forms.TabPage()
         Me.Advanced = New System.Windows.Forms.TabPage()
-        Me.GuidePictureBox = New System.Windows.Forms.PictureBox()
+        Me.PathLabel = New System.Windows.Forms.Label()
         Me.UninstallButton = New System.Windows.Forms.Button()
         Me.ClassTabs = New System.Windows.Forms.TabControl()
         Me.Scout = New System.Windows.Forms.TabPage()
@@ -148,7 +148,8 @@ Partial Class Form2
         Me.GroupBox29 = New System.Windows.Forms.GroupBox()
         Me.EngineerHideToolbox = New System.Windows.Forms.CheckBox()
         Me.EngineerHidePDA = New System.Windows.Forms.CheckBox()
-        Me.RenderButton = New System.Windows.Forms.Button()
+        Me.ClassIconList = New System.Windows.Forms.ImageList(Me.components)
+        Me.InstallButton = New System.Windows.Forms.Button()
         Me.TF2FolderBtn = New System.Windows.Forms.Button()
         Me.Manual = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel12 = New System.Windows.Forms.TableLayoutPanel()
@@ -163,9 +164,9 @@ Partial Class Form2
         Me.AboutButton = New System.Windows.Forms.Button()
         Me.ViewmodelTooltip = New System.Windows.Forms.ToolTip(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.GuidePictureBox = New System.Windows.Forms.PictureBox()
         Me.TabControl1.SuspendLayout()
         Me.Advanced.SuspendLayout()
-        CType(Me.GuidePictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ClassTabs.SuspendLayout()
         Me.Scout.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -220,6 +221,7 @@ Partial Class Form2
         Me.TableLayoutPanel12.SuspendLayout()
         Me.GroupBox30.SuspendLayout()
         Me.GroupBox31.SuspendLayout()
+        CType(Me.GuidePictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -233,7 +235,7 @@ Partial Class Form2
         Me.TabControl1.Location = New System.Drawing.Point(6, 6)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(577, 595)
+        Me.TabControl1.Size = New System.Drawing.Size(615, 614)
         Me.TabControl1.TabIndex = 0
         '
         'Wizard
@@ -241,43 +243,41 @@ Partial Class Form2
         Me.Wizard.Location = New System.Drawing.Point(4, 22)
         Me.Wizard.Name = "Wizard"
         Me.Wizard.Padding = New System.Windows.Forms.Padding(3)
-        Me.Wizard.Size = New System.Drawing.Size(569, 569)
+        Me.Wizard.Size = New System.Drawing.Size(607, 588)
         Me.Wizard.TabIndex = 2
         Me.Wizard.Text = "Wizard"
         Me.Wizard.UseVisualStyleBackColor = True
         '
         'Advanced
         '
+        Me.Advanced.Controls.Add(Me.PathLabel)
         Me.Advanced.Controls.Add(Me.GuidePictureBox)
         Me.Advanced.Controls.Add(Me.UninstallButton)
         Me.Advanced.Controls.Add(Me.ClassTabs)
-        Me.Advanced.Controls.Add(Me.RenderButton)
+        Me.Advanced.Controls.Add(Me.InstallButton)
         Me.Advanced.Controls.Add(Me.TF2FolderBtn)
         Me.Advanced.Location = New System.Drawing.Point(4, 22)
         Me.Advanced.Name = "Advanced"
         Me.Advanced.Padding = New System.Windows.Forms.Padding(3)
-        Me.Advanced.Size = New System.Drawing.Size(569, 569)
+        Me.Advanced.Size = New System.Drawing.Size(607, 588)
         Me.Advanced.TabIndex = 0
         Me.Advanced.Text = "Advanced"
         Me.Advanced.UseVisualStyleBackColor = True
         '
-        'GuidePictureBox
+        'PathLabel
         '
-        Me.GuidePictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GuidePictureBox.Image = Global.CompVMInstaller.My.Resources.Resources.compviewmodelbannersmall
-        Me.GuidePictureBox.Location = New System.Drawing.Point(3, 6)
-        Me.GuidePictureBox.Name = "GuidePictureBox"
-        Me.GuidePictureBox.Size = New System.Drawing.Size(560, 323)
-        Me.GuidePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.GuidePictureBox.TabIndex = 7
-        Me.GuidePictureBox.TabStop = False
+        Me.PathLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.PathLabel.AutoSize = True
+        Me.PathLabel.Location = New System.Drawing.Point(187, 565)
+        Me.PathLabel.Name = "PathLabel"
+        Me.PathLabel.Size = New System.Drawing.Size(142, 13)
+        Me.PathLabel.TabIndex = 8
+        Me.PathLabel.Text = "Please select your TF2 path."
         '
         'UninstallButton
         '
         Me.UninstallButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UninstallButton.Location = New System.Drawing.Point(407, 541)
+        Me.UninstallButton.Location = New System.Drawing.Point(445, 560)
         Me.UninstallButton.Name = "UninstallButton"
         Me.UninstallButton.Size = New System.Drawing.Size(75, 23)
         Me.UninstallButton.TabIndex = 6
@@ -297,19 +297,22 @@ Partial Class Form2
         Me.ClassTabs.Controls.Add(Me.Pyro)
         Me.ClassTabs.Controls.Add(Me.Spy)
         Me.ClassTabs.Controls.Add(Me.Engineer)
-        Me.ClassTabs.Location = New System.Drawing.Point(3, 335)
+        Me.ClassTabs.ImageList = Me.ClassIconList
+        Me.ClassTabs.Location = New System.Drawing.Point(3, 350)
         Me.ClassTabs.Name = "ClassTabs"
+        Me.ClassTabs.Padding = New System.Drawing.Point(4, 4)
         Me.ClassTabs.SelectedIndex = 0
-        Me.ClassTabs.Size = New System.Drawing.Size(563, 200)
+        Me.ClassTabs.Size = New System.Drawing.Size(601, 204)
         Me.ClassTabs.TabIndex = 0
         '
         'Scout
         '
         Me.Scout.Controls.Add(Me.TableLayoutPanel1)
-        Me.Scout.Location = New System.Drawing.Point(4, 22)
+        Me.Scout.ImageIndex = 5
+        Me.Scout.Location = New System.Drawing.Point(4, 25)
         Me.Scout.Name = "Scout"
         Me.Scout.Padding = New System.Windows.Forms.Padding(3)
-        Me.Scout.Size = New System.Drawing.Size(555, 174)
+        Me.Scout.Size = New System.Drawing.Size(593, 175)
         Me.Scout.TabIndex = 0
         Me.Scout.Text = "Scout"
         Me.Scout.UseVisualStyleBackColor = True
@@ -330,7 +333,7 @@ Partial Class Form2
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(543, 162)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(581, 163)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'GroupBox3
@@ -341,9 +344,9 @@ Partial Class Form2
         Me.GroupBox3.AutoSize = True
         Me.GroupBox3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox3.Controls.Add(Me.ScoutHideMelee)
-        Me.GroupBox3.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox3.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox3.Size = New System.Drawing.Size(189, 157)
         Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Melee"
@@ -369,9 +372,9 @@ Partial Class Form2
         Me.GroupBox2.Controls.Add(Me.ScoutHidePistols)
         Me.GroupBox2.Controls.Add(Me.ScoutHideThrowables)
         Me.GroupBox2.Controls.Add(Me.ScoutHideSecondaryInspect)
-        Me.GroupBox2.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox2.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox2.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Secondary"
@@ -434,7 +437,7 @@ Partial Class Form2
         Me.GroupBox1.Controls.Add(Me.ScoutHideScatterguns)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox1.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Primary"
@@ -496,9 +499,10 @@ Partial Class Form2
         'Sniper
         '
         Me.Sniper.Controls.Add(Me.TableLayoutPanel2)
-        Me.Sniper.Location = New System.Drawing.Point(4, 22)
+        Me.Sniper.ImageIndex = 6
+        Me.Sniper.Location = New System.Drawing.Point(4, 25)
         Me.Sniper.Name = "Sniper"
-        Me.Sniper.Size = New System.Drawing.Size(555, 174)
+        Me.Sniper.Size = New System.Drawing.Size(593, 175)
         Me.Sniper.TabIndex = 2
         Me.Sniper.Text = "Sniper"
         Me.Sniper.UseVisualStyleBackColor = True
@@ -519,7 +523,7 @@ Partial Class Form2
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(543, 162)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(581, 163)
         Me.TableLayoutPanel2.TabIndex = 1
         '
         'GroupBox4
@@ -530,9 +534,9 @@ Partial Class Form2
         Me.GroupBox4.AutoSize = True
         Me.GroupBox4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox4.Controls.Add(Me.SniperHideMelee)
-        Me.GroupBox4.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox4.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox4.Size = New System.Drawing.Size(189, 157)
         Me.GroupBox4.TabIndex = 1
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Melee"
@@ -557,9 +561,9 @@ Partial Class Form2
         Me.GroupBox5.Controls.Add(Me.SniperHideSMGs)
         Me.GroupBox5.Controls.Add(Me.SniperHideThrowables)
         Me.GroupBox5.Controls.Add(Me.SniperHideSecondaryInspect)
-        Me.GroupBox5.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox5.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox5.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox5.TabIndex = 1
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Secondary"
@@ -609,7 +613,7 @@ Partial Class Form2
         Me.GroupBox6.Controls.Add(Me.SniperHideRifles)
         Me.GroupBox6.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox6.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox6.TabIndex = 0
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Primary"
@@ -650,10 +654,11 @@ Partial Class Form2
         'Soldier
         '
         Me.Soldier.Controls.Add(Me.TableLayoutPanel3)
-        Me.Soldier.Location = New System.Drawing.Point(4, 22)
+        Me.Soldier.ImageIndex = 7
+        Me.Soldier.Location = New System.Drawing.Point(4, 25)
         Me.Soldier.Name = "Soldier"
         Me.Soldier.Padding = New System.Windows.Forms.Padding(3)
-        Me.Soldier.Size = New System.Drawing.Size(555, 174)
+        Me.Soldier.Size = New System.Drawing.Size(593, 175)
         Me.Soldier.TabIndex = 1
         Me.Soldier.Text = "Soldier"
         Me.Soldier.UseVisualStyleBackColor = True
@@ -674,7 +679,7 @@ Partial Class Form2
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(543, 162)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(581, 163)
         Me.TableLayoutPanel3.TabIndex = 2
         '
         'GroupBox7
@@ -685,9 +690,9 @@ Partial Class Form2
         Me.GroupBox7.AutoSize = True
         Me.GroupBox7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox7.Controls.Add(Me.SoldierHideMelee)
-        Me.GroupBox7.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox7.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox7.Size = New System.Drawing.Size(189, 157)
         Me.GroupBox7.TabIndex = 1
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Melee"
@@ -713,9 +718,9 @@ Partial Class Form2
         Me.GroupBox8.Controls.Add(Me.SoldierHideShotguns)
         Me.GroupBox8.Controls.Add(Me.SoldierHideBanners)
         Me.GroupBox8.Controls.Add(Me.SoldierHideSecondaryInspect)
-        Me.GroupBox8.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox8.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox8.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox8.TabIndex = 1
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Secondary"
@@ -777,7 +782,7 @@ Partial Class Form2
         Me.GroupBox9.Controls.Add(Me.SoldierHideRockets)
         Me.GroupBox9.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox9.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox9.TabIndex = 0
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Primary"
@@ -829,9 +834,10 @@ Partial Class Form2
         'Demoman
         '
         Me.Demoman.Controls.Add(Me.TableLayoutPanel4)
-        Me.Demoman.Location = New System.Drawing.Point(4, 22)
+        Me.Demoman.ImageIndex = 0
+        Me.Demoman.Location = New System.Drawing.Point(4, 25)
         Me.Demoman.Name = "Demoman"
-        Me.Demoman.Size = New System.Drawing.Size(555, 174)
+        Me.Demoman.Size = New System.Drawing.Size(593, 175)
         Me.Demoman.TabIndex = 3
         Me.Demoman.Text = "Demoman"
         Me.Demoman.UseVisualStyleBackColor = True
@@ -852,7 +858,7 @@ Partial Class Form2
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(543, 162)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(581, 163)
         Me.TableLayoutPanel4.TabIndex = 2
         '
         'GroupBox10
@@ -863,9 +869,9 @@ Partial Class Form2
         Me.GroupBox10.AutoSize = True
         Me.GroupBox10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox10.Controls.Add(Me.DemomanHideMelee)
-        Me.GroupBox10.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox10.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox10.Name = "GroupBox10"
-        Me.GroupBox10.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox10.Size = New System.Drawing.Size(189, 157)
         Me.GroupBox10.TabIndex = 1
         Me.GroupBox10.TabStop = False
         Me.GroupBox10.Text = "Melee"
@@ -889,9 +895,9 @@ Partial Class Form2
         Me.GroupBox11.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox11.Controls.Add(Me.DemomanHideStickybombs)
         Me.GroupBox11.Controls.Add(Me.DemomanHideSecondaryInspect)
-        Me.GroupBox11.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox11.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox11.Name = "GroupBox11"
-        Me.GroupBox11.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox11.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox11.TabIndex = 1
         Me.GroupBox11.TabStop = False
         Me.GroupBox11.Text = "Secondary"
@@ -928,7 +934,7 @@ Partial Class Form2
         Me.GroupBox12.Controls.Add(Me.DemomanHideGrenades)
         Me.GroupBox12.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox12.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox12.TabIndex = 0
         Me.GroupBox12.TabStop = False
         Me.GroupBox12.Text = "Primary"
@@ -957,9 +963,10 @@ Partial Class Form2
         'Medic
         '
         Me.Medic.Controls.Add(Me.TableLayoutPanel5)
-        Me.Medic.Location = New System.Drawing.Point(4, 22)
+        Me.Medic.ImageIndex = 3
+        Me.Medic.Location = New System.Drawing.Point(4, 25)
         Me.Medic.Name = "Medic"
-        Me.Medic.Size = New System.Drawing.Size(555, 174)
+        Me.Medic.Size = New System.Drawing.Size(593, 175)
         Me.Medic.TabIndex = 4
         Me.Medic.Text = "Medic"
         Me.Medic.UseVisualStyleBackColor = True
@@ -980,7 +987,7 @@ Partial Class Form2
         Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
         Me.TableLayoutPanel5.RowCount = 1
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(543, 162)
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(581, 163)
         Me.TableLayoutPanel5.TabIndex = 2
         '
         'GroupBox13
@@ -991,9 +998,9 @@ Partial Class Form2
         Me.GroupBox13.AutoSize = True
         Me.GroupBox13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox13.Controls.Add(Me.MedicHideMelee)
-        Me.GroupBox13.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox13.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox13.Name = "GroupBox13"
-        Me.GroupBox13.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox13.Size = New System.Drawing.Size(189, 157)
         Me.GroupBox13.TabIndex = 1
         Me.GroupBox13.TabStop = False
         Me.GroupBox13.Text = "Melee"
@@ -1017,9 +1024,9 @@ Partial Class Form2
         Me.GroupBox14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox14.Controls.Add(Me.MedicHideMediguns)
         Me.GroupBox14.Controls.Add(Me.MedicHideSecondaryInspect)
-        Me.GroupBox14.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox14.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox14.Name = "GroupBox14"
-        Me.GroupBox14.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox14.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox14.TabIndex = 1
         Me.GroupBox14.TabStop = False
         Me.GroupBox14.Text = "Secondary"
@@ -1056,7 +1063,7 @@ Partial Class Form2
         Me.GroupBox15.Controls.Add(Me.MedicHidePrimaries)
         Me.GroupBox15.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox15.Name = "GroupBox15"
-        Me.GroupBox15.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox15.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox15.TabIndex = 0
         Me.GroupBox15.TabStop = False
         Me.GroupBox15.Text = "Primary"
@@ -1086,9 +1093,10 @@ Partial Class Form2
         'Heavy
         '
         Me.Heavy.Controls.Add(Me.TableLayoutPanel6)
-        Me.Heavy.Location = New System.Drawing.Point(4, 22)
+        Me.Heavy.ImageIndex = 2
+        Me.Heavy.Location = New System.Drawing.Point(4, 25)
         Me.Heavy.Name = "Heavy"
-        Me.Heavy.Size = New System.Drawing.Size(555, 174)
+        Me.Heavy.Size = New System.Drawing.Size(593, 175)
         Me.Heavy.TabIndex = 6
         Me.Heavy.Text = "Heavy"
         Me.Heavy.UseVisualStyleBackColor = True
@@ -1109,7 +1117,7 @@ Partial Class Form2
         Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
         Me.TableLayoutPanel6.RowCount = 1
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel6.Size = New System.Drawing.Size(543, 162)
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(581, 163)
         Me.TableLayoutPanel6.TabIndex = 2
         '
         'GroupBox16
@@ -1120,9 +1128,9 @@ Partial Class Form2
         Me.GroupBox16.AutoSize = True
         Me.GroupBox16.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox16.Controls.Add(Me.HeavyHideMelee)
-        Me.GroupBox16.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox16.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox16.Name = "GroupBox16"
-        Me.GroupBox16.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox16.Size = New System.Drawing.Size(189, 157)
         Me.GroupBox16.TabIndex = 1
         Me.GroupBox16.TabStop = False
         Me.GroupBox16.Text = "Melee"
@@ -1147,9 +1155,9 @@ Partial Class Form2
         Me.GroupBox17.Controls.Add(Me.HeavyHideShotguns)
         Me.GroupBox17.Controls.Add(Me.HeavyHideConsumables)
         Me.GroupBox17.Controls.Add(Me.HeavyHideSecondaryInspect)
-        Me.GroupBox17.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox17.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox17.Name = "GroupBox17"
-        Me.GroupBox17.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox17.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox17.TabIndex = 1
         Me.GroupBox17.TabStop = False
         Me.GroupBox17.Text = "Secondary"
@@ -1198,7 +1206,7 @@ Partial Class Form2
         Me.GroupBox18.Controls.Add(Me.HeavyHideMiniguns)
         Me.GroupBox18.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox18.Name = "GroupBox18"
-        Me.GroupBox18.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox18.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox18.TabIndex = 0
         Me.GroupBox18.TabStop = False
         Me.GroupBox18.Text = "Primary"
@@ -1227,9 +1235,10 @@ Partial Class Form2
         'Pyro
         '
         Me.Pyro.Controls.Add(Me.TableLayoutPanel7)
-        Me.Pyro.Location = New System.Drawing.Point(4, 22)
+        Me.Pyro.ImageIndex = 4
+        Me.Pyro.Location = New System.Drawing.Point(4, 25)
         Me.Pyro.Name = "Pyro"
-        Me.Pyro.Size = New System.Drawing.Size(555, 174)
+        Me.Pyro.Size = New System.Drawing.Size(593, 175)
         Me.Pyro.TabIndex = 7
         Me.Pyro.Text = "Pyro"
         Me.Pyro.UseVisualStyleBackColor = True
@@ -1250,7 +1259,7 @@ Partial Class Form2
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 1
         Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel7.Size = New System.Drawing.Size(543, 162)
+        Me.TableLayoutPanel7.Size = New System.Drawing.Size(581, 163)
         Me.TableLayoutPanel7.TabIndex = 2
         '
         'GroupBox19
@@ -1261,9 +1270,9 @@ Partial Class Form2
         Me.GroupBox19.AutoSize = True
         Me.GroupBox19.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox19.Controls.Add(Me.PyroHideMelee)
-        Me.GroupBox19.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox19.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox19.Name = "GroupBox19"
-        Me.GroupBox19.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox19.Size = New System.Drawing.Size(189, 157)
         Me.GroupBox19.TabIndex = 1
         Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "Melee"
@@ -1288,9 +1297,9 @@ Partial Class Form2
         Me.GroupBox20.Controls.Add(Me.PyroHideShotguns)
         Me.GroupBox20.Controls.Add(Me.PyroHideFlareGuns)
         Me.GroupBox20.Controls.Add(Me.PyroHideSecondaryInspect)
-        Me.GroupBox20.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox20.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox20.Name = "GroupBox20"
-        Me.GroupBox20.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox20.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox20.TabIndex = 1
         Me.GroupBox20.TabStop = False
         Me.GroupBox20.Text = "Secondary"
@@ -1339,7 +1348,7 @@ Partial Class Form2
         Me.GroupBox21.Controls.Add(Me.PyroHideFlamethrowers)
         Me.GroupBox21.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox21.Name = "GroupBox21"
-        Me.GroupBox21.Size = New System.Drawing.Size(175, 156)
+        Me.GroupBox21.Size = New System.Drawing.Size(187, 157)
         Me.GroupBox21.TabIndex = 0
         Me.GroupBox21.TabStop = False
         Me.GroupBox21.Text = "Primary"
@@ -1368,9 +1377,10 @@ Partial Class Form2
         'Spy
         '
         Me.Spy.Controls.Add(Me.TableLayoutPanel10)
-        Me.Spy.Location = New System.Drawing.Point(4, 22)
+        Me.Spy.ImageIndex = 8
+        Me.Spy.Location = New System.Drawing.Point(4, 25)
         Me.Spy.Name = "Spy"
-        Me.Spy.Size = New System.Drawing.Size(555, 174)
+        Me.Spy.Size = New System.Drawing.Size(593, 175)
         Me.Spy.TabIndex = 8
         Me.Spy.Text = "Spy"
         Me.Spy.UseVisualStyleBackColor = True
@@ -1389,7 +1399,7 @@ Partial Class Form2
         Me.TableLayoutPanel10.RowCount = 2
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93.0!))
-        Me.TableLayoutPanel10.Size = New System.Drawing.Size(549, 168)
+        Me.TableLayoutPanel10.Size = New System.Drawing.Size(587, 169)
         Me.TableLayoutPanel10.TabIndex = 2
         '
         'TableLayoutPanel8
@@ -1408,7 +1418,7 @@ Partial Class Form2
         Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
         Me.TableLayoutPanel8.RowCount = 1
         Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel8.Size = New System.Drawing.Size(543, 69)
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(581, 70)
         Me.TableLayoutPanel8.TabIndex = 1
         '
         'GroupBox24
@@ -1422,7 +1432,7 @@ Partial Class Form2
         Me.GroupBox24.Controls.Add(Me.SpyHideRevolvers)
         Me.GroupBox24.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox24.Name = "GroupBox24"
-        Me.GroupBox24.Size = New System.Drawing.Size(175, 63)
+        Me.GroupBox24.Size = New System.Drawing.Size(187, 64)
         Me.GroupBox24.TabIndex = 0
         Me.GroupBox24.TabStop = False
         Me.GroupBox24.Text = "Primary"
@@ -1457,9 +1467,9 @@ Partial Class Form2
         Me.GroupBox22.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox22.Controls.Add(Me.SpyHideMeleeInspect)
         Me.GroupBox22.Controls.Add(Me.SpyHideMelee)
-        Me.GroupBox22.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox22.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox22.Name = "GroupBox22"
-        Me.GroupBox22.Size = New System.Drawing.Size(175, 63)
+        Me.GroupBox22.Size = New System.Drawing.Size(189, 64)
         Me.GroupBox22.TabIndex = 1
         Me.GroupBox22.TabStop = False
         Me.GroupBox22.Text = "Melee"
@@ -1493,9 +1503,9 @@ Partial Class Form2
         Me.GroupBox23.AutoSize = True
         Me.GroupBox23.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox23.Controls.Add(Me.SpyHideSappers)
-        Me.GroupBox23.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox23.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox23.Name = "GroupBox23"
-        Me.GroupBox23.Size = New System.Drawing.Size(175, 63)
+        Me.GroupBox23.Size = New System.Drawing.Size(187, 64)
         Me.GroupBox23.TabIndex = 1
         Me.GroupBox23.TabStop = False
         Me.GroupBox23.Text = "Secondary"
@@ -1521,9 +1531,9 @@ Partial Class Form2
         Me.GroupBox28.Controls.Add(Me.SpyHideDisguiseKit)
         Me.GroupBox28.Controls.Add(Me.SpyHideDeadRinger)
         Me.GroupBox28.Controls.Add(Me.SpyHideInvisWatch)
-        Me.GroupBox28.Location = New System.Drawing.Point(3, 78)
+        Me.GroupBox28.Location = New System.Drawing.Point(3, 79)
         Me.GroupBox28.Name = "GroupBox28"
-        Me.GroupBox28.Size = New System.Drawing.Size(543, 87)
+        Me.GroupBox28.Size = New System.Drawing.Size(581, 87)
         Me.GroupBox28.TabIndex = 2
         Me.GroupBox28.TabStop = False
         Me.GroupBox28.Text = "PDA"
@@ -1575,9 +1585,10 @@ Partial Class Form2
         'Engineer
         '
         Me.Engineer.Controls.Add(Me.TableLayoutPanel9)
-        Me.Engineer.Location = New System.Drawing.Point(4, 22)
+        Me.Engineer.ImageIndex = 1
+        Me.Engineer.Location = New System.Drawing.Point(4, 25)
         Me.Engineer.Name = "Engineer"
-        Me.Engineer.Size = New System.Drawing.Size(555, 174)
+        Me.Engineer.Size = New System.Drawing.Size(593, 175)
         Me.Engineer.TabIndex = 5
         Me.Engineer.Text = "Engineer"
         Me.Engineer.UseVisualStyleBackColor = True
@@ -1596,7 +1607,7 @@ Partial Class Form2
         Me.TableLayoutPanel9.RowCount = 2
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
-        Me.TableLayoutPanel9.Size = New System.Drawing.Size(549, 168)
+        Me.TableLayoutPanel9.Size = New System.Drawing.Size(587, 169)
         Me.TableLayoutPanel9.TabIndex = 3
         '
         'TableLayoutPanel11
@@ -1615,7 +1626,7 @@ Partial Class Form2
         Me.TableLayoutPanel11.Name = "TableLayoutPanel11"
         Me.TableLayoutPanel11.RowCount = 1
         Me.TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel11.Size = New System.Drawing.Size(543, 92)
+        Me.TableLayoutPanel11.Size = New System.Drawing.Size(581, 93)
         Me.TableLayoutPanel11.TabIndex = 1
         '
         'GroupBox25
@@ -1630,7 +1641,7 @@ Partial Class Form2
         Me.GroupBox25.Controls.Add(Me.EngineerHideShotguns)
         Me.GroupBox25.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox25.Name = "GroupBox25"
-        Me.GroupBox25.Size = New System.Drawing.Size(175, 86)
+        Me.GroupBox25.Size = New System.Drawing.Size(187, 87)
         Me.GroupBox25.TabIndex = 0
         Me.GroupBox25.TabStop = False
         Me.GroupBox25.Text = "Primary"
@@ -1678,9 +1689,9 @@ Partial Class Form2
         Me.GroupBox26.Controls.Add(Me.EngineerHideGunslinger)
         Me.GroupBox26.Controls.Add(Me.EngineerHideMeleeInspect)
         Me.GroupBox26.Controls.Add(Me.EngineerHideWrenches)
-        Me.GroupBox26.Location = New System.Drawing.Point(365, 3)
+        Me.GroupBox26.Location = New System.Drawing.Point(389, 3)
         Me.GroupBox26.Name = "GroupBox26"
-        Me.GroupBox26.Size = New System.Drawing.Size(175, 86)
+        Me.GroupBox26.Size = New System.Drawing.Size(189, 87)
         Me.GroupBox26.TabIndex = 1
         Me.GroupBox26.TabStop = False
         Me.GroupBox26.Text = "Melee"
@@ -1727,9 +1738,9 @@ Partial Class Form2
         Me.GroupBox27.Controls.Add(Me.EngineerHidePistols)
         Me.GroupBox27.Controls.Add(Me.EngineerHideWrangler)
         Me.GroupBox27.Controls.Add(Me.EngineerHideSecondaryInspect)
-        Me.GroupBox27.Location = New System.Drawing.Point(184, 3)
+        Me.GroupBox27.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox27.Name = "GroupBox27"
-        Me.GroupBox27.Size = New System.Drawing.Size(175, 86)
+        Me.GroupBox27.Size = New System.Drawing.Size(187, 87)
         Me.GroupBox27.TabIndex = 1
         Me.GroupBox27.TabStop = False
         Me.GroupBox27.Text = "Secondary"
@@ -1785,9 +1796,9 @@ Partial Class Form2
         Me.GroupBox29.AutoSize = True
         Me.GroupBox29.Controls.Add(Me.EngineerHideToolbox)
         Me.GroupBox29.Controls.Add(Me.EngineerHidePDA)
-        Me.GroupBox29.Location = New System.Drawing.Point(3, 101)
+        Me.GroupBox29.Location = New System.Drawing.Point(3, 102)
         Me.GroupBox29.Name = "GroupBox29"
-        Me.GroupBox29.Size = New System.Drawing.Size(543, 64)
+        Me.GroupBox29.Size = New System.Drawing.Size(581, 64)
         Me.GroupBox29.TabIndex = 2
         Me.GroupBox29.TabStop = False
         Me.GroupBox29.Text = "PDA"
@@ -1814,26 +1825,41 @@ Partial Class Form2
         Me.ViewmodelTooltip.SetToolTip(Me.EngineerHidePDA, "Construction PDA (slot 4)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Destruction PDA (slot 5)")
         Me.EngineerHidePDA.UseVisualStyleBackColor = True
         '
-        'RenderButton
+        'ClassIconList
         '
-        Me.RenderButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RenderButton.Enabled = False
-        Me.RenderButton.Location = New System.Drawing.Point(488, 541)
-        Me.RenderButton.Name = "RenderButton"
-        Me.RenderButton.Size = New System.Drawing.Size(75, 23)
-        Me.RenderButton.TabIndex = 0
-        Me.RenderButton.Text = "Install"
-        Me.RenderButton.UseVisualStyleBackColor = True
+        Me.ClassIconList.ImageStream = CType(resources.GetObject("ClassIconList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ClassIconList.TransparentColor = System.Drawing.Color.Transparent
+        Me.ClassIconList.Images.SetKeyName(0, "Leaderboard_class_demoman.png")
+        Me.ClassIconList.Images.SetKeyName(1, "Leaderboard_class_engineer.png")
+        Me.ClassIconList.Images.SetKeyName(2, "Leaderboard_class_heavy.png")
+        Me.ClassIconList.Images.SetKeyName(3, "Leaderboard_class_medic.png")
+        Me.ClassIconList.Images.SetKeyName(4, "Leaderboard_class_pyro.png")
+        Me.ClassIconList.Images.SetKeyName(5, "Leaderboard_class_scout.png")
+        Me.ClassIconList.Images.SetKeyName(6, "Leaderboard_class_sniper.png")
+        Me.ClassIconList.Images.SetKeyName(7, "Leaderboard_class_soldier.png")
+        Me.ClassIconList.Images.SetKeyName(8, "Leaderboard_class_spy.png")
+        '
+        'InstallButton
+        '
+        Me.InstallButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.InstallButton.Enabled = False
+        Me.InstallButton.Location = New System.Drawing.Point(526, 560)
+        Me.InstallButton.Name = "InstallButton"
+        Me.InstallButton.Size = New System.Drawing.Size(75, 23)
+        Me.InstallButton.TabIndex = 0
+        Me.InstallButton.Text = "Install"
+        Me.InstallButton.UseVisualStyleBackColor = True
         '
         'TF2FolderBtn
         '
         Me.TF2FolderBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TF2FolderBtn.Enabled = False
-        Me.TF2FolderBtn.Location = New System.Drawing.Point(6, 541)
+        Me.TF2FolderBtn.Location = New System.Drawing.Point(6, 560)
         Me.TF2FolderBtn.Name = "TF2FolderBtn"
         Me.TF2FolderBtn.Size = New System.Drawing.Size(175, 23)
         Me.TF2FolderBtn.TabIndex = 1
         Me.TF2FolderBtn.Text = "Select ""Team Fortress 2"" Folder"
+        Me.ViewmodelTooltip.SetToolTip(Me.TF2FolderBtn, "test")
         Me.TF2FolderBtn.UseVisualStyleBackColor = True
         '
         'Manual
@@ -1842,7 +1868,7 @@ Partial Class Form2
         Me.Manual.Location = New System.Drawing.Point(4, 22)
         Me.Manual.Name = "Manual"
         Me.Manual.Padding = New System.Windows.Forms.Padding(3)
-        Me.Manual.Size = New System.Drawing.Size(569, 569)
+        Me.Manual.Size = New System.Drawing.Size(607, 588)
         Me.Manual.TabIndex = 1
         Me.Manual.Text = "Manual"
         '
@@ -1861,7 +1887,7 @@ Partial Class Form2
         Me.TableLayoutPanel12.RowCount = 1
         Me.TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel12.Size = New System.Drawing.Size(569, 387)
+        Me.TableLayoutPanel12.Size = New System.Drawing.Size(659, 430)
         Me.TableLayoutPanel12.TabIndex = 4
         '
         'GroupBox30
@@ -1871,9 +1897,9 @@ Partial Class Form2
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox30.Controls.Add(Me.OutputBox)
         Me.GroupBox30.Controls.Add(Me.SaveButton)
-        Me.GroupBox30.Location = New System.Drawing.Point(287, 3)
+        Me.GroupBox30.Location = New System.Drawing.Point(332, 3)
         Me.GroupBox30.Name = "GroupBox30"
-        Me.GroupBox30.Size = New System.Drawing.Size(279, 381)
+        Me.GroupBox30.Size = New System.Drawing.Size(324, 424)
         Me.GroupBox30.TabIndex = 2
         Me.GroupBox30.TabStop = False
         Me.GroupBox30.Text = "Output File"
@@ -1886,14 +1912,14 @@ Partial Class Form2
         Me.OutputBox.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OutputBox.Location = New System.Drawing.Point(6, 77)
         Me.OutputBox.Name = "OutputBox"
-        Me.OutputBox.Size = New System.Drawing.Size(267, 298)
+        Me.OutputBox.Size = New System.Drawing.Size(312, 341)
         Me.OutputBox.TabIndex = 9
         Me.OutputBox.Text = ""
         '
         'SaveButton
         '
         Me.SaveButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SaveButton.Location = New System.Drawing.Point(191, 45)
+        Me.SaveButton.Location = New System.Drawing.Point(236, 45)
         Me.SaveButton.Name = "SaveButton"
         Me.SaveButton.Size = New System.Drawing.Size(82, 26)
         Me.SaveButton.TabIndex = 3
@@ -1911,7 +1937,7 @@ Partial Class Form2
         Me.GroupBox31.Controls.Add(Me.InputPath)
         Me.GroupBox31.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox31.Name = "GroupBox31"
-        Me.GroupBox31.Size = New System.Drawing.Size(278, 381)
+        Me.GroupBox31.Size = New System.Drawing.Size(323, 424)
         Me.GroupBox31.TabIndex = 1
         Me.GroupBox31.TabStop = False
         Me.GroupBox31.Text = "Input File"
@@ -1924,7 +1950,7 @@ Partial Class Form2
         Me.InputBox.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.InputBox.Location = New System.Drawing.Point(6, 77)
         Me.InputBox.Name = "InputBox"
-        Me.InputBox.Size = New System.Drawing.Size(266, 298)
+        Me.InputBox.Size = New System.Drawing.Size(311, 341)
         Me.InputBox.TabIndex = 8
         Me.InputBox.Text = ""
         Me.InputBox.WordWrap = False
@@ -1941,7 +1967,7 @@ Partial Class Form2
         'RefreshButton
         '
         Me.RefreshButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RefreshButton.Location = New System.Drawing.Point(190, 45)
+        Me.RefreshButton.Location = New System.Drawing.Point(235, 45)
         Me.RefreshButton.Name = "RefreshButton"
         Me.RefreshButton.Size = New System.Drawing.Size(82, 26)
         Me.RefreshButton.TabIndex = 6
@@ -1954,7 +1980,7 @@ Partial Class Form2
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.InputPath.Location = New System.Drawing.Point(6, 19)
         Me.InputPath.Name = "InputPath"
-        Me.InputPath.Size = New System.Drawing.Size(266, 20)
+        Me.InputPath.Size = New System.Drawing.Size(311, 20)
         Me.InputPath.TabIndex = 0
         '
         'AboutButton
@@ -1962,7 +1988,7 @@ Partial Class Form2
         Me.AboutButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AboutButton.FlatAppearance.BorderSize = 0
         Me.AboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.AboutButton.Location = New System.Drawing.Point(506, 2)
+        Me.AboutButton.Location = New System.Drawing.Point(544, 2)
         Me.AboutButton.Name = "AboutButton"
         Me.AboutButton.Size = New System.Drawing.Size(75, 23)
         Me.AboutButton.TabIndex = 6
@@ -1973,20 +1999,34 @@ Partial Class Form2
         '
         Me.Timer1.Interval = 10000
         '
+        'GuidePictureBox
+        '
+        Me.GuidePictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GuidePictureBox.Image = Global.CompVMInstaller.My.Resources.Resources.compviewmodelbannersmall
+        Me.GuidePictureBox.Location = New System.Drawing.Point(3, 6)
+        Me.GuidePictureBox.Name = "GuidePictureBox"
+        Me.GuidePictureBox.Size = New System.Drawing.Size(598, 338)
+        Me.GuidePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.GuidePictureBox.TabIndex = 7
+        Me.GuidePictureBox.TabStop = False
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(589, 607)
+        Me.ClientSize = New System.Drawing.Size(627, 626)
         Me.Controls.Add(Me.AboutButton)
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(550, 360)
         Me.Name = "Form2"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Competitive Viewmodel Installer"
         Me.TabControl1.ResumeLayout(False)
         Me.Advanced.ResumeLayout(False)
-        CType(Me.GuidePictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Advanced.PerformLayout()
         Me.ClassTabs.ResumeLayout(False)
         Me.Scout.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -2082,6 +2122,7 @@ Partial Class Form2
         Me.GroupBox30.ResumeLayout(False)
         Me.GroupBox31.ResumeLayout(False)
         Me.GroupBox31.PerformLayout()
+        CType(Me.GuidePictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2098,7 +2139,7 @@ Partial Class Form2
     Friend WithEvents Pyro As System.Windows.Forms.TabPage
     Friend WithEvents Spy As System.Windows.Forms.TabPage
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents RenderButton As Button
+    Friend WithEvents InstallButton As Button
     Friend WithEvents TF2FolderBtn As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
@@ -2224,4 +2265,6 @@ Partial Class Form2
     Friend WithEvents Label1 As Label
     Friend WithEvents GuidePictureBox As PictureBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents PathLabel As Label
+    Friend WithEvents ClassIconList As ImageList
 End Class

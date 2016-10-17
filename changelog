@@ -1,7 +1,11 @@
 1.3.2
-Fixed an issue where models would be rotated by 90 degrees at the start of an animation.
+Fixed a critical issue where models would be rotated by 90 degrees at the start of an animation.
+Settings are now saved between launches using .NET's internal Settings framework.
+    The previous registry entry has been updated to use this same framework.
 Fixed some small grammatical mistakes.
-Added a real icon.
+Polished how the image guide behaves.
+Added an application icon, which also shows in the About window.
+Added icons to the class tabs.
 Updated the localization files.
 
 1.3.1
