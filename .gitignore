@@ -47,5 +47,5 @@ Temporary Items
 .apdisk
 
 #VS build folders
-obj
-bin
+bin/
+obj/
