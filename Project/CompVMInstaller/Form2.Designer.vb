@@ -125,7 +125,6 @@ Partial Class Form2
         Me.GroupBox23 = New System.Windows.Forms.GroupBox()
         Me.SpyHideSappers = New System.Windows.Forms.CheckBox()
         Me.GroupBox28 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.SpyHideDisguiseKit = New System.Windows.Forms.CheckBox()
         Me.SpyHideDeadRinger = New System.Windows.Forms.CheckBox()
         Me.SpyHideInvisWatch = New System.Windows.Forms.CheckBox()
@@ -164,6 +163,10 @@ Partial Class Form2
         Me.AboutButton = New System.Windows.Forms.Button()
         Me.ViewmodelTooltip = New System.Windows.Forms.ToolTip(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.LaunchTF2Button = New System.Windows.Forms.Button()
+        Me.ItemtestCheckbox = New System.Windows.Forms.CheckBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.GuidePictureBox = New System.Windows.Forms.PictureBox()
         Me.TabControl1.SuspendLayout()
         Me.Advanced.SuspendLayout()
@@ -250,6 +253,7 @@ Partial Class Form2
         '
         'Advanced
         '
+        Me.Advanced.Controls.Add(Me.ItemtestCheckbox)
         Me.Advanced.Controls.Add(Me.PathLabel)
         Me.Advanced.Controls.Add(Me.GuidePictureBox)
         Me.Advanced.Controls.Add(Me.UninstallButton)
@@ -776,6 +780,7 @@ Partial Class Form2
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox9.AutoSize = True
         Me.GroupBox9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.GroupBox9.Controls.Add(Me.Button1)
         Me.GroupBox9.Controls.Add(Me.SoldierHideMangler)
         Me.GroupBox9.Controls.Add(Me.SoldierHideOriginal)
         Me.GroupBox9.Controls.Add(Me.SoldierHidePrimaryInspect)
@@ -801,6 +806,9 @@ Partial Class Form2
         'SoldierHideOriginal
         '
         Me.SoldierHideOriginal.AutoSize = True
+        Me.SoldierHideOriginal.Checked = True
+        Me.SoldierHideOriginal.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.SoldierHideOriginal.Enabled = False
         Me.SoldierHideOriginal.Location = New System.Drawing.Point(6, 42)
         Me.SoldierHideOriginal.Name = "SoldierHideOriginal"
         Me.SoldierHideOriginal.Size = New System.Drawing.Size(86, 17)
@@ -1527,7 +1535,7 @@ Partial Class Form2
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox28.AutoSize = True
-        Me.GroupBox28.Controls.Add(Me.Label1)
+        Me.GroupBox28.Controls.Add(Me.Button2)
         Me.GroupBox28.Controls.Add(Me.SpyHideDisguiseKit)
         Me.GroupBox28.Controls.Add(Me.SpyHideDeadRinger)
         Me.GroupBox28.Controls.Add(Me.SpyHideInvisWatch)
@@ -1537,16 +1545,6 @@ Partial Class Form2
         Me.GroupBox28.TabIndex = 2
         Me.GroupBox28.TabStop = False
         Me.GroupBox28.Text = "PDA"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(165, 25)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(249, 52)
-        Me.Label1.TabIndex = 15
-        Me.Label1.Text = "Cannot currently be disabled as I haven't" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "figured out how to make them hide prop" &
-    "erly." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "These should be hideable in a future release. Sorry!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'SpyHideDisguiseKit
         '
@@ -1999,6 +1997,60 @@ Partial Class Form2
         '
         Me.Timer1.Interval = 10000
         '
+        'LaunchTF2Button
+        '
+        Me.LaunchTF2Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LaunchTF2Button.FlatAppearance.BorderSize = 0
+        Me.LaunchTF2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.LaunchTF2Button.Location = New System.Drawing.Point(448, 2)
+        Me.LaunchTF2Button.Name = "LaunchTF2Button"
+        Me.LaunchTF2Button.Size = New System.Drawing.Size(84, 23)
+        Me.LaunchTF2Button.TabIndex = 7
+        Me.LaunchTF2Button.Text = "Launch TF2"
+        Me.LaunchTF2Button.UseVisualStyleBackColor = True
+        '
+        'ItemtestCheckbox
+        '
+        Me.ItemtestCheckbox.AutoSize = True
+        Me.ItemtestCheckbox.Enabled = False
+        Me.ItemtestCheckbox.Location = New System.Drawing.Point(376, 564)
+        Me.ItemtestCheckbox.Name = "ItemtestCheckbox"
+        Me.ItemtestCheckbox.Size = New System.Drawing.Size(63, 17)
+        Me.ItemtestCheckbox.TabIndex = 9
+        Me.ItemtestCheckbox.Text = "Itemtest"
+        Me.ItemtestCheckbox.UseVisualStyleBackColor = True
+        Me.ItemtestCheckbox.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Location = New System.Drawing.Point(98, 38)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(47, 23)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "?"
+        Me.ViewmodelTooltip.SetToolTip(Me.Button1, "Due to an animation bug, the Original is always" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "hidden if any other Soldier weap" &
+        "ons are hidden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Location = New System.Drawing.Point(134, 12)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(94, 78)
+        Me.Button2.TabIndex = 15
+        Me.Button2.Text = "?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "?"
+        Me.ViewmodelTooltip.SetToolTip(Me.Button2, "Due to the complexity of the Spy's animation files, these are always shown." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "In a" &
+        " future release, these might become hideable.")
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'GuidePictureBox
         '
         Me.GuidePictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -2017,6 +2069,7 @@ Partial Class Form2
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(627, 626)
+        Me.Controls.Add(Me.LaunchTF2Button)
         Me.Controls.Add(Me.AboutButton)
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -2262,9 +2315,12 @@ Partial Class Form2
     Friend WithEvents Wizard As TabPage
     Friend WithEvents AboutButton As Button
     Friend WithEvents ViewmodelTooltip As ToolTip
-    Friend WithEvents Label1 As Label
     Friend WithEvents GuidePictureBox As PictureBox
     Friend WithEvents Timer1 As Timer
     Friend WithEvents PathLabel As Label
     Friend WithEvents ClassIconList As ImageList
+    Friend WithEvents LaunchTF2Button As Button
+    Friend WithEvents ItemtestCheckbox As CheckBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class

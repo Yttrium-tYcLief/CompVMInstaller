@@ -46,6 +46,8 @@ Public Class Form2
             Me.Text = My.Application.Info.Title
         Else
             Me.Text = My.Application.Info.Title + " - DEV MODE"
+            ItemtestCheckbox.Enabled = True
+            ItemtestCheckbox.Visible = True
         End If
         TabControl1.TabPages.RemoveAt(0)
 
@@ -201,10 +203,12 @@ Public Class Form2
         End If
 
         'Check for Soldier changes
+
+        'And SoldierHideOriginal.Checked = False
+
         If SoldierHideRockets.Checked = False _
-            And SoldierHideOriginal.Checked = False _
             And SoldierHideMangler.Checked = False _
-            And ScoutHidePrimaryInspect.Checked = False _
+            And SoldierHidePrimaryInspect.Checked = False _
             And SoldierHideShotguns.Checked = False _
             And SoldierHideBanners.Checked = False _
             And SoldierHideBison.Checked = False _
@@ -376,19 +380,18 @@ Public Class Form2
         PrepFolders()
         Dialog1.InfoBox.AppendText("Done." + vbNewLine)
         CheckForChanges()
+        If DevMode Then MessageBox.Show("Alter files now.")
         RenderFiles()
         RenderModels()
         CopyModels()
         PackageMod()
-        If DevMode Then
-            Dialog1.InfoBox.AppendText("Dev mode enabled, skipping preloader." + vbNewLine)
-        Else
-            PreloaderInstall()
-        End If
+        If DevMode = False Then PreloaderInstall()
         CleanUp()
 
         Dialog1.InfoBox.AppendText(vbNewLine + "Mod installed.")
         Dialog1.OK_Button.Enabled = True
+
+        StoreSettings()
 
     End Sub
 
@@ -533,14 +536,14 @@ Public Class Form2
                 EditFile("mangler_reload_loop", "Soldier")
                 EditFile("mangler_reload_finish", "Soldier")
             End If
-            If SoldierHideOriginal.Checked Then
-                EditFile("bet_idle", "Soldier")
-                EditFile("bet_fire", "Soldier")
-                EditFile("bet_draw", "Soldier")
-                EditFile("bet_reload_start", "Soldier")
-                EditFile("bet_reload_loop", "Soldier")
-                EditFile("bet_reload_finish", "Soldier")
-            End If
+            'If SoldierHideOriginal.Checked Then
+            EditFile("bet_idle", "Soldier")
+            EditFile("bet_fire", "Soldier")
+            EditFile("bet_draw", "Soldier")
+            EditFile("bet_reload_start", "Soldier")
+            EditFile("bet_reload_loop", "Soldier")
+            EditFile("bet_reload_finish", "Soldier")
+            'End If
             If SoldierHidePrimaryInspect.Checked Then
                 EditFile("primary_inspect_start", "Soldier")
                 EditFile("primary_inspect_idle", "Soldier")
@@ -1557,13 +1560,25 @@ Public Class Form2
             End While
         End Using
 
-        For Each line As String In InputBox.Lines
-            If line.Contains("map_background preload_room; wait 10; disconnect") Then
-                Dialog1.InfoBox.AppendText("No edits necessary." + vbNewLine)
-                Exit Sub
-            End If
-        Next
-        InputBox.AppendText(vbNewLine + "map_background preload_room; wait 10; disconnect")
+        If DevMode Then
+            'If ItemtestCheckbox.Checked Then
+            '    For Each line As String In InputBox.Lines
+            '        If line.Contains("map itemtest") Then
+            '            Dialog1.InfoBox.AppendText("No edits necessary." + vbNewLine)
+            '            Exit Sub
+            '        End If
+            '    Next
+            '    InputBox.AppendText(vbNewLine + "map itemtest")
+            'End If
+        Else
+            For Each line As String In InputBox.Lines
+                If line.Contains("map_background preload_room; wait 10; disconnect") Then
+                    Dialog1.InfoBox.AppendText("No edits necessary." + vbNewLine)
+                    Exit Sub
+                End If
+            Next
+            InputBox.AppendText(vbNewLine + "map_background preload_room; wait 10; disconnect")
+        End If
 
         Dim file As System.IO.StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(AutoexecPath, False)
         file.Write(InputBox.Text)
@@ -1605,6 +1620,7 @@ Public Class Form2
         End Using
 
         Dim file As System.IO.StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(AutoexecPath, False)
+        'If ItemtestCheckbox.Checked Then file.Write(InputBox.Text.Replace("map itemtest", ""))
         file.Write(InputBox.Text.Replace("map_background preload_room; wait 10; disconnect", ""))
         file.Close()
         InputBox.Clear()
@@ -1645,8 +1661,8 @@ Public Class Form2
         SniperHideMelee.Checked = My.Settings.SniperMelee
 
         SoldierHideRockets.Checked = My.Settings.SoldierRocketLaunchers
-        SoldierHideOriginal.Checked = My.Settings.SoldierOriginal
-        ScoutHidePrimaryInspect.Checked = My.Settings.SoldierPrimary
+        'SoldierHideOriginal.Checked = My.Settings.SoldierOriginal
+        SoldierHidePrimaryInspect.Checked = My.Settings.SoldierPrimary
         SoldierHideShotguns.Checked = My.Settings.SoldierShotguns
         SoldierHideBanners.Checked = My.Settings.SoldierBanners
         SoldierHideBison.Checked = My.Settings.SoldierBison
@@ -1718,8 +1734,8 @@ Public Class Form2
         My.Settings.SniperMelee = SniperHideMelee.Checked
 
         My.Settings.SoldierRocketLaunchers = SoldierHideRockets.Checked
-        My.Settings.SoldierOriginal = SoldierHideOriginal.Checked
-        My.Settings.SoldierPrimary = ScoutHidePrimaryInspect.Checked
+        'My.Settings.SoldierOriginal = SoldierHideOriginal.Checked
+        My.Settings.SoldierPrimary = SoldierHidePrimaryInspect.Checked
         My.Settings.SoldierShotguns = SoldierHideShotguns.Checked
         My.Settings.SoldierBanners = SoldierHideBanners.Checked
         My.Settings.SoldierBison = SoldierHideBison.Checked
@@ -1792,5 +1808,9 @@ Public Class Form2
                 GuidePictureBox.Image = My.Resources.engineer_blank
         End Select
 
+    End Sub
+
+    Private Sub LaunchTF2Button_Click(sender As Object, e As EventArgs) Handles LaunchTF2Button.Click
+        Process.Start("steam://run/440")
     End Sub
 End Class
