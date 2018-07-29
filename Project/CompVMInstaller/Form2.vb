@@ -258,6 +258,8 @@ Public Class Form2
             And PyroHidePrimaryInspect.Checked = False _
             And PyroHideShotguns.Checked = False _
             And PyroHideFlareGuns.Checked = False _
+            And PyroHideGasPasser.Checked = False _
+            And PyroHideThermalThruster.Checked = False _
             And PyroHideSecondaryInspect.Checked = False _
             And PyroHideMelee.Checked = False Then
             PyroChanged = False
@@ -424,6 +426,9 @@ Public Class Form2
                 EditFile("primary_inspect_start", "Scout")
                 EditFile("primary_inspect_idle", "Scout")
                 EditFile("primary_inspect_end", "Scout")
+                EditFile("primary_alt1_inspect_end", "Scout")
+                EditFile("primary_alt1_inspect_idle", "Scout")
+                EditFile("primary_alt1_inspect_start", "Scout")
             End If
             If ScoutHidePistols.Checked Then
                 EditFile("p_draw", "Scout")
@@ -445,6 +450,9 @@ Public Class Form2
                 EditFile("secondary_inspect_start", "Scout")
                 EditFile("secondary_inspect_idle", "Scout")
                 EditFile("secondary_inspect_end", "Scout")
+                EditFile("secondary_alt1_inspect_end", "Scout")
+                EditFile("secondary_alt1_inspect_idle", "Scout")
+                EditFile("secondary_alt1_inspect_start", "Scout")
             End If
             If ScoutHideMelee.Checked Then
                 EditFile("b_idle", "Scout")
@@ -470,10 +478,6 @@ Public Class Form2
                 EditFile("draw", "Sniper")
                 EditFile("fire", "Sniper")
                 EditFile("idle", "Sniper")
-                EditFile("rifolver_draw", "Sniper")
-                EditFile("rifolver_fire", "Sniper")
-                EditFile("rifolver_fire_reload", "Sniper")
-                EditFile("rifolver_idle", "Sniper")
             End If
             If SniperHideHuntsman.Checked Then
                 EditFile("bw_idle", "Sniper")
@@ -490,6 +494,9 @@ Public Class Form2
                 EditFile("primary_inspect_start", "Sniper")
                 EditFile("primary_inspect_idle", "Sniper")
                 EditFile("primary_inspect_end", "Sniper")
+                EditFile("primary_alt1_inspect_start", "Sniper")
+                EditFile("primary_alt1_inspect_idle", "Sniper")
+                EditFile("primary_alt1_inspect_end", "Sniper")
             End If
             If SniperHideSMGs.Checked Then
                 EditFile("smg_draw", "Sniper")
@@ -582,6 +589,9 @@ Public Class Form2
                 EditFile("secondary_inspect_start", "Soldier")
                 EditFile("secondary_inspect_idle", "Soldier")
                 EditFile("secondary_inspect_end", "Soldier")
+                EditFile("secondary_alt1_inspect_start", "Soldier")
+                EditFile("secondary_alt1_inspect_idle", "Soldier")
+                EditFile("secondary_alt1_inspect_end", "Soldier")
             End If
             If SoldierHideMelee.Checked Then
                 EditFile("s_draw", "Soldier")
@@ -611,6 +621,9 @@ Public Class Form2
                 EditFile("primary_inspect_start", "Demo")
                 EditFile("primary_inspect_idle", "Demo")
                 EditFile("primary_inspect_end", "Demo")
+                EditFile("primary_alt1_inspect_start", "Demo")
+                EditFile("primary_alt1_inspect_idle", "Demo")
+                EditFile("primary_alt1_inspect_end", "Demo")
             End If
             If DemomanHideStickybombs.Checked Then
                 EditFile("sb_idle", "Demo")
@@ -731,11 +744,19 @@ Public Class Form2
                 EditFile("ft_fire", "Pyro")
                 EditFile("ft_draw", "Pyro")
                 EditFile("ft_alt_fire", "Pyro")
+                EditFile("df_idle", "Pyro")
+                EditFile("df_fire", "Pyro")
             End If
             If PyroHidePrimaryInspect.Checked Then
                 EditFile("primary_inspect_start", "Pyro")
                 EditFile("primary_inspect_idle", "Pyro")
                 EditFile("primary_inspect_end", "Pyro")
+                EditFile("primary_alt1_inspect_start", "Pyro")
+                EditFile("primary_alt1_inspect_idle", "Pyro")
+                EditFile("primary_alt1_inspect_end", "Pyro")
+                EditFile("dragons_fury_inspect_start", "Pyro")
+                EditFile("dragons_fury_inspect_idle", "Pyro")
+                EditFile("dragons_fury_inspect_start", "Pyro")
             End If
             If PyroHideShotguns.Checked Then
                 EditFile("draw", "Pyro")
@@ -753,6 +774,17 @@ Public Class Form2
                 EditFile("mm_idle", "Pyro")
                 EditFile("mm_fire", "Pyro")
             End If
+            If PyroHideThermalThruster.Checked Then
+                EditFile("rocketpack_draw", "Pyro")
+                EditFile("rocketpack_holster", "Pyro")
+                EditFile("rocketpack_idle", "Pyro")
+                EditFile("rocketpack_idle2", "Pyro")
+            End If
+            If PyroHideGasPasser.Checked Then
+                EditFile("gascan_draw", "Pyro")
+                EditFile("gascan_idle", "Pyro")
+                EditFile("gascan_fire", "Pyro")
+            End If
             If PyroHideSecondaryInspect.Checked Then
                 EditFile("secondary_inspect_start", "Pyro")
                 EditFile("secondary_inspect_idle", "Pyro")
@@ -764,6 +796,12 @@ Public Class Form2
                 EditFile("fa_swing_a", "Pyro")
                 EditFile("fa_swing_b", "Pyro")
                 EditFile("fa_swing_c", "Pyro")
+                EditFile("slap", "Pyro")
+                EditFile("slap_draw", "Pyro")
+                EditFile("slap_idle", "Pyro")
+                EditFile("slap2", "Pyro")
+                EditFile("slap3", "Pyro")
+                EditFile("slap_idle2", "Pyro")
                 EditFile("melee_allclass_draw", "Pyro")
                 EditFile("melee_allclass_idle", "Pyro")
                 EditFile("melee_allclass_swing", "Pyro")
@@ -861,6 +899,9 @@ Public Class Form2
                 EditFile("primary_inspect_start", "Engineer")
                 EditFile("primary_inspect_idle", "Engineer")
                 EditFile("primary_inspect_end", "Engineer")
+                EditFile("primary_alt1_inspect_start", "Engineer")
+                EditFile("primary_alt1_inspect_idle", "Engineer")
+                EditFile("primary_alt1_inspect_end", "Engineer")
             End If
             If EngineerHidePistols.Checked Then
                 EditFile("pstl_draw", "Engineer")
@@ -882,6 +923,12 @@ Public Class Form2
                 EditFile("secondary_inspect_start", "Engineer")
                 EditFile("secondary_inspect_idle", "Engineer")
                 EditFile("secondary_inspect_end", "Engineer")
+                EditFile("secondary_alt1_inspect_start", "Engineer")
+                EditFile("secondary_alt1_inspect_idle", "Engineer")
+                EditFile("secondary_alt1_inspect_end", "Engineer")
+                EditFile("secondary_alt2_inspect_start", "Engineer")
+                EditFile("secondary_alt2_inspect_idle", "Engineer")
+                EditFile("secondary_alt2_inspect_end", "Engineer")
             End If
             If EngineerHideWrenches.Checked Then
                 EditFile("pdq_idle_tap", "Engineer")
@@ -1380,6 +1427,22 @@ Public Class Form2
         End If
 
     End Sub
+    Private Sub PyroHideThermalThruster_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHideThermalThruster.CheckedChanged, PyroHideThermalThruster.MouseEnter
+        If PyroHideThermalThruster.Checked Then
+            GuidePictureBox.Image = My.Resources.pyro_blank
+        Else
+            GuidePictureBox.Image = My.Resources.pyro_thermalthruster
+        End If
+
+    End Sub
+    Private Sub PyroHideGasPasser_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHideGasPasser.CheckedChanged, PyroHideGasPasser.MouseEnter
+        If PyroHideGasPasser.Checked Then
+            GuidePictureBox.Image = My.Resources.pyro_blank
+        Else
+            GuidePictureBox.Image = My.Resources.pyro_gaspasser
+        End If
+
+    End Sub
     Private Sub PyroHideSecondaryInspect_CheckedChanged(sender As Object, e As EventArgs) Handles PyroHideSecondaryInspect.CheckedChanged, PyroHideSecondaryInspect.MouseEnter
         If PyroHideSecondaryInspect.Checked Then
             GuidePictureBox.Image = My.Resources.pyro_blank
@@ -1692,6 +1755,8 @@ Public Class Form2
         PyroHidePrimaryInspect.Checked = My.Settings.PyroPrimary
         PyroHideShotguns.Checked = My.Settings.PyroShotguns
         PyroHideFlareGuns.Checked = My.Settings.PyroFlareguns
+        PyroHideThermalThruster.Checked = My.Settings.PyroThermalthruster
+        PyroHideGasPasser.Checked = My.Settings.PyroGaspasser
         PyroHideSecondaryInspect.Checked = My.Settings.PyroSecondary
         PyroHideMelee.Checked = My.Settings.PyroMelee
 
@@ -1765,6 +1830,8 @@ Public Class Form2
         My.Settings.PyroPrimary = PyroHidePrimaryInspect.Checked
         My.Settings.PyroShotguns = PyroHideShotguns.Checked
         My.Settings.PyroFlareguns = PyroHideFlareGuns.Checked
+        My.Settings.PyroThermalthruster = PyroHideThermalThruster.Checked
+        My.Settings.PyroGaspasser = PyroHideGasPasser.Checked
         My.Settings.PyroSecondary = PyroHideSecondaryInspect.Checked
         My.Settings.PyroMelee = PyroHideMelee.Checked
 

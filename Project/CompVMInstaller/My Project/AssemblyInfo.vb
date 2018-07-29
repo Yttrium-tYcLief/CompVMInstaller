@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Competitive Viewmodel Installer")>
-<Assembly: AssemblyDescription("An installer for yttrium's hidden competitive TF2 viewmodels.")>
+<Assembly: AssemblyDescription("An installer for yttrium's hidden competitive TF2 viewmodels")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("Competitive Viewmodel Installer")>
-<Assembly: AssemblyCopyright("© 2016 yttrium")>
+<Assembly: AssemblyCopyright("©2018 yttrium")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.3.2.0")>
-<Assembly: AssemblyFileVersion("1.3.2.0")>
+<Assembly: AssemblyVersion("1.4.1.0")>
+<Assembly: AssemblyFileVersion("1.4.1.0")>

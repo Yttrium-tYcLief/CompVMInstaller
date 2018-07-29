@@ -134,6 +134,12 @@
     <Setting Name="PyroFlareguns" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="PyroThermalthruster" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PyroGaspasser" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="PyroSecondary" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -193,6 +199,9 @@
     </Setting>
     <Setting Name="TF2Path" Type="System.String" Scope="User">
       <Value Profile="(Default)">none</Value>
+    </Setting>
+    <Setting Name="PyroThermathruster" Type="System.String" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

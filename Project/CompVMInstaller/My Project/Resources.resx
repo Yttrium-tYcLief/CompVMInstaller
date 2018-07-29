@@ -238,6 +238,9 @@
   <data name="pyro_flaregun" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pyro_flaregun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pyro_gaspasser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_gaspasser.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pyro_melee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pyro_melee.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -246,6 +249,9 @@
   </data>
   <data name="pyro_shotgun_inspect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pyro_shotgun_inspect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pyro_thermalthruster" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pyro_thermalthruster.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="scout_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\scout_blank.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

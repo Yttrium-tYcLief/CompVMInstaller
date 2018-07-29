@@ -109,6 +109,8 @@ Partial Class Form2
         Me.GroupBox20 = New System.Windows.Forms.GroupBox()
         Me.PyroHideShotguns = New System.Windows.Forms.CheckBox()
         Me.PyroHideFlareGuns = New System.Windows.Forms.CheckBox()
+        Me.PyroHideThermalThruster = New System.Windows.Forms.CheckBox()
+        Me.PyroHideGasPasser = New System.Windows.Forms.CheckBox()
         Me.PyroHideSecondaryInspect = New System.Windows.Forms.CheckBox()
         Me.GroupBox21 = New System.Windows.Forms.GroupBox()
         Me.PyroHidePrimaryInspect = New System.Windows.Forms.CheckBox()
@@ -1304,6 +1306,8 @@ Partial Class Form2
         Me.GroupBox20.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox20.Controls.Add(Me.PyroHideShotguns)
         Me.GroupBox20.Controls.Add(Me.PyroHideFlareGuns)
+        Me.GroupBox20.Controls.Add(Me.PyroHideThermalThruster)
+        Me.GroupBox20.Controls.Add(Me.PyroHideGasPasser)
         Me.GroupBox20.Controls.Add(Me.PyroHideSecondaryInspect)
         Me.GroupBox20.Location = New System.Drawing.Point(196, 3)
         Me.GroupBox20.Name = "GroupBox20"
@@ -1335,10 +1339,32 @@ Partial Class Form2
         Me.PyroHideFlareGuns.UseMnemonic = False
         Me.PyroHideFlareGuns.UseVisualStyleBackColor = True
         '
+        'PyroHideThermalThruster
+        '
+        Me.PyroHideThermalThruster.AutoSize = True
+        Me.PyroHideThermalThruster.Location = New System.Drawing.Point(6, 65)
+        Me.PyroHideThermalThruster.Name = "PyroHideThermalThruster"
+        Me.PyroHideThermalThruster.Size = New System.Drawing.Size(108, 17)
+        Me.PyroHideThermalThruster.TabIndex = 6
+        Me.PyroHideThermalThruster.Text = "Hide Thermal Thruster"
+        Me.PyroHideThermalThruster.UseMnemonic = False
+        Me.PyroHideThermalThruster.UseVisualStyleBackColor = True
+        '
+        'PyroHideGasPasser
+        '
+        Me.PyroHideGasPasser.AutoSize = True
+        Me.PyroHideGasPasser.Location = New System.Drawing.Point(6, 88)
+        Me.PyroHideGasPasser.Name = "PyroHideGasPasser"
+        Me.PyroHideGasPasser.Size = New System.Drawing.Size(114, 17)
+        Me.PyroHideGasPasser.TabIndex = 6
+        Me.PyroHideGasPasser.Text = "Hide Gas Passer"
+        Me.PyroHideGasPasser.UseMnemonic = False
+        Me.PyroHideGasPasser.UseVisualStyleBackColor = True
+        '
         'PyroHideSecondaryInspect
         '
         Me.PyroHideSecondaryInspect.AutoSize = True
-        Me.PyroHideSecondaryInspect.Location = New System.Drawing.Point(6, 65)
+        Me.PyroHideSecondaryInspect.Location = New System.Drawing.Point(6, 111)
         Me.PyroHideSecondaryInspect.Name = "PyroHideSecondaryInspect"
         Me.PyroHideSecondaryInspect.Size = New System.Drawing.Size(145, 17)
         Me.PyroHideSecondaryInspect.TabIndex = 5
@@ -1366,7 +1392,7 @@ Partial Class Form2
         Me.PyroHidePrimaryInspect.AutoSize = True
         Me.PyroHidePrimaryInspect.Location = New System.Drawing.Point(6, 42)
         Me.PyroHidePrimaryInspect.Name = "PyroHidePrimaryInspect"
-        Me.PyroHidePrimaryInspect.Size = New System.Drawing.Size(128, 17)
+        Me.PyroHidePrimaryInspect.Size = New System.Drawing.Size(119, 17)
         Me.PyroHidePrimaryInspect.TabIndex = 1
         Me.PyroHidePrimaryInspect.Text = "Hide Primary Inspects"
         Me.PyroHidePrimaryInspect.UseVisualStyleBackColor = True
@@ -1376,10 +1402,10 @@ Partial Class Form2
         Me.PyroHideFlamethrowers.AutoSize = True
         Me.PyroHideFlamethrowers.Location = New System.Drawing.Point(6, 19)
         Me.PyroHideFlamethrowers.Name = "PyroHideFlamethrowers"
-        Me.PyroHideFlamethrowers.Size = New System.Drawing.Size(119, 17)
+        Me.PyroHideFlamethrowers.Size = New System.Drawing.Size(110, 17)
         Me.PyroHideFlamethrowers.TabIndex = 0
         Me.PyroHideFlamethrowers.Text = "Hide Flamethrowers"
-        Me.ViewmodelTooltip.SetToolTip(Me.PyroHideFlamethrowers, "Flame Thrower" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Backburner" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Degreaser" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Phlogistinator")
+        Me.ViewmodelTooltip.SetToolTip(Me.PyroHideFlamethrowers, "Flame Thrower" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Backburner" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Degreaser" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Phlogistinator" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Dragon's Fury")
         Me.PyroHideFlamethrowers.UseVisualStyleBackColor = True
         '
         'Spy
@@ -2269,6 +2295,8 @@ Partial Class Form2
     Friend WithEvents GroupBox20 As GroupBox
     Friend WithEvents PyroHideShotguns As CheckBox
     Friend WithEvents PyroHideFlareGuns As CheckBox
+    Friend WithEvents PyroHideThermalThruster As CheckBox
+    Friend WithEvents PyroHideGasPasser As CheckBox
     Friend WithEvents PyroHideSecondaryInspect As CheckBox
     Friend WithEvents GroupBox21 As GroupBox
     Friend WithEvents PyroHidePrimaryInspect As CheckBox
